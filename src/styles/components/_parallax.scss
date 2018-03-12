@@ -1,0 +1,20 @@
+.parallax-window {
+    position:fixed;
+    height:100%;
+    width: 100%;
+    left: 0;
+    background-size: 100%;   
+    background-repeat: no-repeat;
+         
+    &.photo {
+        background-image: url('/images/Nagata-9463.png');
+        margin: 0;
+        top:0;
+
+    }
+
+    &.logo {
+        background-image: url('/images/nagata-dance-logo_stacked.png');
+
+    }
+}

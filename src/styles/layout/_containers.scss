@@ -1,0 +1,15 @@
+.container {
+    @extend .container;
+}
+
+#app {
+    // background-color: $brand-secondary;
+}
+
+.section-content {
+    padding: 20px;
+}
+
+.section {
+    min-height: 800px;
+}
