@@ -6,10 +6,16 @@ import Section from '../components/Section';
 
 
 export default class Home extends React.Component {
+
+  componentDidMount() {
+
+  }
   render() {
     return (
       <div>
         <div className="site-header">
+
+          <div id="particles"></div>
 
           <div className="jumbotron">
             <h1> James O'Donoghue</h1>
@@ -17,13 +23,13 @@ export default class Home extends React.Component {
           </div>
 
           <div className="nav-section">
-            <Navbar/>
+            <Navbar />
           </div>
         </div>
-          <div className="resume">
-            <Section/>
-          </div>
-        
+        <div className="resume container">
+          <Section />
+        </div>
+
       </div>
     );
   }

@@ -22,9 +22,9 @@ export default class Header extends React.Component {
             <div>
 
                 <nav className="navbar navbar-expand-lg navbar-light justify-content-center fixed">
-                    <a className="nav-link" href="#education"> Education </a>
                     <a className="nav-link" href="#experience"> Experience </a>
                     <a className="nav-link" href="#skills"> Skills </a>
+                    <a className="nav-link" href="#education"> Education </a>
                     <a className="nav-link" href="#contact"> Contact </a>
                 </nav>
     
