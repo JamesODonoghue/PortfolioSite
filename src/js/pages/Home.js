@@ -13,15 +13,14 @@ export default class Home extends React.Component {
 
           <div className="jumbotron">
             <h1> James O'Donoghue</h1>
-            <h3> Javascript Developer </h3>
-
+            <h3> Javascript/HTML/CSS Developer </h3>
           </div>
 
           <div className="nav-section">
             <Navbar/>
           </div>
         </div>
-          <div className="resume container">
+          <div className="resume">
             <Section/>
           </div>
         
