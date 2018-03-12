@@ -12,7 +12,7 @@ export default class Home extends React.Component {
         <div className="site-header">
 
           <div className="jumbotron">
-            <h1> James O'Donoghue Test Change</h1>
+            <h1> James O'Donoghue</h1>
 
           </div>
 
