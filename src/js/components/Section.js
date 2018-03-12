@@ -1,9 +1,5 @@
 import React from 'react';
-
 import $ from 'jquery';
-
-import chart from 'chart.js';
-
 
 export default class Section extends React.Component {
 
