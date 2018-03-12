@@ -13,6 +13,7 @@ export default class Home extends React.Component {
 
           <div className="jumbotron">
             <h1> James O'Donoghue</h1>
+            <h3> Javascript Developer </h3>
 
           </div>
 
