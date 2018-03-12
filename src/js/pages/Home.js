@@ -20,9 +20,7 @@ export default class Home extends React.Component {
             <Navbar/>
           </div>
         </div>
-          
-
-          <div className="container">
+          <div className="resume container">
             <Section/>
           </div>
         

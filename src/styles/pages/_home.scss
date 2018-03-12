@@ -3,14 +3,34 @@
 // -----------------------------------------------------------------------------
 
 .site-header {
+    text-align: center;   
+    margin-bottom: 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
 
     h1 {
         font-size: 6em;
     }
-    text-align: center;   
-    margin-bottom: 0;
+
+    .jumbotron {
+        margin-bottom: 0;
+    }
+
     
 }
+
+.resume {
+    position: relative;
+    top:600px;
+
+}
+
+.nav-section {
+    background: #fff;
+}
+
 
 
 
