@@ -16,6 +16,8 @@
 
     .jumbotron {
         margin-bottom: 0;
+        background: #000;
+        color: #fff;
     }
 
     
@@ -44,7 +46,18 @@
 
 }
 
+.my-particles {
+    position: fixed;
+    width: 100%;
+}
 
+a {
+    color: $brand-pink;
+}
 
+.badge-pink {
+    background-color: $brand-pink;
+
+}
 
 

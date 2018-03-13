@@ -3,7 +3,11 @@ import React from 'react';
 import Parallax from '../components/parallax';
 import Navbar from '../components/Navbar';
 import Section from '../components/Section';
+import $ from 'jquery';
 
+import Particles from 'react-particles-js';
+
+const particlesConfig = require('../assets/particlesjs-config.json');
 
 export default class Home extends React.Component {
 
@@ -15,7 +19,7 @@ export default class Home extends React.Component {
       <div>
         <div className="site-header">
 
-          <div id="particles"></div>
+          <Particles className="my-particles" height={300} params={particlesConfig}/>
 
           <div className="jumbotron">
             <h1> James O'Donoghue</h1>
