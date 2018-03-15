@@ -22,10 +22,21 @@ export default class Header extends React.Component {
             <div>
 
                 <nav className="navbar navbar-expand-lg navbar-light justify-content-center fixed">
-                    <a className="nav-link" href="#experience"> Experience </a>
-                    <a className="nav-link" href="#skills"> Skills </a>
-                    <a className="nav-link" href="#education"> Education </a>
-                    <a className="nav-link" href="#contact"> Contact </a>
+                    <ul className="nav nav-pills">
+                        <li className="nav-item">
+                            <a className="nav-link active" data-toggle="pill" href="#experience"> Experience </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" data-toggle="pill" href="#skills"> Skills </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" data-toggle="pill" href="#education"> Education </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" data-toggle="pill" href="#contact"> Contact </a>
+                        </li>
+                        
+                    </ul>
                 </nav>
     
             </div>

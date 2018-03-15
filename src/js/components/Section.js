@@ -15,8 +15,6 @@ export default class Section extends React.Component {
                 { key: 'knockout', name: 'Knockout', value: '80%'},
                 { key: 'jquery', name: 'JQuery', value: '70%'}
                 
-                
-                
             ]
         }
     }
@@ -32,7 +30,10 @@ export default class Section extends React.Component {
                 <div className="skill" key={skill.key} id={skill.key}>
                     <h4>{skill.name}</h4>
                     <div className="progress">
-                        <div className="progress-bar bg-info" role="progressbar" style={barStyle} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div className="progress-bar bg-primary" role="progressbar" style={barStyle} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                            <div className="progress-animated"></div>
+                        </div>
+                        
                     </div>
                 </div>
             );
