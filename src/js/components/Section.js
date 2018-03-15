@@ -42,11 +42,11 @@ export default class Section extends React.Component {
         return (
             <div>
                 <div className="section row" id="experience">
-                    <div className="section-title col-3">
+                    <div className="section-title col-sm-3">
                         <h3>Experience</h3>
                     
                     </div>
-                    <div className="section-content col-6">
+                    <div className="section-content col-sm-6">
                         <h4> Software Engineer</h4>
                         <p> Advent Software </p>
                         <p>
@@ -69,40 +69,40 @@ export default class Section extends React.Component {
                             Format and automate Jenkins logs using Splunk (allowed for robust queries on info/errors/warnings).  
                         </p>
                     </div>
-                    <div className="section-content col-3">
+                    <div className="section-content col-sm-3">
                         <h4><span className="badge badge-primary badge-pink">2014-Current</span></h4>
                     </div>
                 </div>
                 <div className="section row" id="skills">
-                    <div className="section-title col-3">
+                    <div className="section-title col-sm-3">
                         <h3>Skills</h3>
                     
                     </div>
-                    <div className="section-content col-6">
+                    <div className="section-content col-sm-6">
                         {skills}
                     </div>
-                    <div className="section-content col-3"></div>
+                    <div className="section-content col-sm-3"></div>
                 </div>
                 <div className="section row" id="education">
-                    <div className="section-title col-3">
+                    <div className="section-title col-sm-3">
                         <h3> Education </h3>
                     </div>
-                    <div className="section-content col-6">
+                    <div className="section-content col-sm-6">
                         <h4> Computer Science, Bachelor of Science</h4>
                         <p> Seattle University </p>
                     </div>
-                    <div className="section-content col-3">
+                    <div className="section-content col-sm-3">
                         <h4><span className="badge badge-primary badge-pink">2010-2014</span></h4>
                     </div>
                 </div>
                 <div className="section row" id="contact">
-                    <div className="section-title col-3">
+                    <div className="section-title col-sm-3">
                         <h3>Contact</h3>
                     </div>
-                    <div className="section-content col-6">
+                    <div className="section-content col-sm-6">
                         <h4>jodonogh1@gmail.com</h4>
                     </div>
-                    <div className="section-content col-3"></div>
+                    <div className="section-content col-sm-3"></div>
                 </div>
             </div>
         );

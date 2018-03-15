@@ -22,7 +22,7 @@ export default class Home extends React.Component {
           <Particles className="my-particles" height={300} params={particlesConfig}/>
 
           <div className="jumbotron">
-            <h1> James O'Donoghue</h1>
+            <h1 className="display-1"> James O'Donoghue</h1>
             <h3> Javascript/HTML/CSS Developer </h3>
           </div>
 
