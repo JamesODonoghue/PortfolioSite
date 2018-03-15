@@ -1,8 +1,13 @@
 
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: inherit;
+    color: $brand-pink;
     background-color: inherit;
     border-radius: 0;
     border-bottom: 2px solid $brand-pink;
+}
+
+.nav-link {
+    padding: 0;
+    margin: .5em .5em;
 }
