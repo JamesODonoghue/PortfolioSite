@@ -11,7 +11,7 @@ const history = createBrowserHistory()
 
 import Layout from './js/pages/Layout';
 import Home from './js/pages/Home';
-
+import Health from './js/pages/Health';
 
 const routes = (
     <BrowserRouter>
@@ -19,6 +19,8 @@ const routes = (
         <Layout>
             <Switch>
                 <Route exact path="/" component={Home} />
+                <Route path="/health" component={Health} />
+                
             </Switch>
         </Layout>
     </BrowserRouter>
