@@ -1,3 +1,10 @@
 .health-page {
-    font-family: 'Raleway', 'sans-serif';
+    max-width:500px;
+    margin:auto;
+    position:relative;
+    text-align: center;
+}
+
+.health-data {
+    overflow: auto;
 }

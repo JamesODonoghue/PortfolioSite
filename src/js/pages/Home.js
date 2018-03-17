@@ -7,7 +7,8 @@ import $ from 'jquery';
 
 import Particles from 'react-particles-js';
 
-const particlesConfig = require('assets/particlesjs-config.json');
+
+const particlesConfig = require('Assets/particlesjs-config.json');
 
 export default class Home extends React.Component {
 

@@ -28,10 +28,18 @@ module.exports = {
             {
                 test: /\.(?:png|jpg|svg)$/,
                 loader: 'url-loader'
-            }
+            },
+            {
+                test: /\.csv$/,
+                exclude: /node_modules/,
+                use: ['csv-loader']
+            },
         ]
     },
     resolve: {
+        alias:{
+            Assets: path.resolve(__dirname, 'src/js/assets/')
+        },
         extensions: ['*', '.js', '.jsx']
     },
     devServer: {
