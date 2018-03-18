@@ -2,16 +2,20 @@
 import React from 'react';
 import $ from 'jquery';
 import _ from 'lodash';
+import utils from 'Helpers/utils';
 
 var healthData = require('Assets/health-data.csv');
 
 
 
 const TableRow = ({row}) => (
+
   <tr>
-    {row.map((val, index) => 
-      <td key={index}>{val}</td>
-    )}
+      <td>{row.Start}</td>
+      <td>{row['Active Calories (kcal)']}</td>
+      <td>{row['Cycling Distance (mi)']}</td>
+      <td>{row.Steps}</td>
+      
   </tr>
 )
 
@@ -32,10 +36,15 @@ export default class Health extends React.Component {
   constructor(){
     super();
 
+  }
 
+  mapData() {
+    healthData = utils.mapCSVData(healthData);
 
   }
   render() {
+
+    this.mapData();
 
     return (
       <div>
@@ -45,7 +54,7 @@ export default class Health extends React.Component {
           </div>
         </div>
         <div className="health-data container">
-          <Table headers={this.headers} data={healthData}/>
+          <Table data={healthData}/>
         </div>
       </div>
     );
