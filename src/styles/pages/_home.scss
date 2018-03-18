@@ -10,10 +10,6 @@
     top: 0;
     z-index: 9999;
 
-    h1 {
-        font-size: 6em;
-    }
-
     .jumbotron {
         margin-bottom: 0;
         background: #000;
@@ -22,6 +18,15 @@
     }
 
     
+}
+
+
+.site-title {
+    font-size: 4em;
+}
+
+.site-subtitle {
+    font-size: 2em;
 }
 
 .resume {
@@ -61,24 +66,38 @@ a {
 
 }
 
+
+
+
 @media(max-width: 380px){
-    .site-header h1 {
+    .site-title{
         font-size: 2em;
     }
 
-    canvas {
-        display:none;
-    }
-}
-
-@media(max-width: 940px){
-    .site-header h1 {
-        font-size: 3em;
+    .site-subtitle {
+        font-size: 1em;
     }
 
     .resume {
+        top: 250px;
+    }
+
+    .section {
+        min-height:300px;
+        padding-bottom: 150px;
+    }
+  
+    canvas {
+        display:none;
+    }
+  }
+  
+  @media(min-width: 940px){
+    .site-title {
+        font-size: 3em;
+    }
+  
+    .resume {
         top: 500px;
     }
-}
-
-
+  }
