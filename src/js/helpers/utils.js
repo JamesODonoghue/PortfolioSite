@@ -21,7 +21,11 @@ export default {
                     obj[fields[0][j]] = col;
                 });
 
-                dataObj.push(obj);
+                if(!(obj.Steps === '0.0' && obj['Active Calories (kcal)'] === '0.0' && obj['Cycling Distance (mi)'] === '0.0')){
+                    dataObj.push(obj);
+
+                }
+
                 
             });
 

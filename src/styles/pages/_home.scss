@@ -5,7 +5,7 @@
 .site-header {
     text-align: center;   
     margin-bottom: 0;
-    position: fixed;
+    // position: fixed;
     width: 100%;
     top: 0;
     z-index: 9999;
@@ -30,13 +30,10 @@
 }
 
 .resume {
-    position: relative;
+    position: absolute;
     top:600px;
+    z-index: -2;
 
-}
-
-.nav-section {
-    background: #fff;
 }
 
 .section-title {
@@ -92,12 +89,12 @@ a {
     }
   }
   
-  @media(min-width: 940px){
-    .site-title {
-        font-size: 3em;
-    }
+//   @media(min-width: 940px){
+//     .site-title {
+//         font-size: 3em;
+//     }
   
-    .resume {
-        top: 500px;
-    }
-  }
+//     .resume {
+//         top: 500px;
+//     }
+//   }

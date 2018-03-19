@@ -20,6 +20,7 @@ export default class Home extends React.Component {
       <div>
         <div className="site-header">
 
+          {/* <Parallax className="jumbotron"/> */}
           <Particles className="my-particles" height={300} params={particlesConfig}/>
 
           <div className="jumbotron">

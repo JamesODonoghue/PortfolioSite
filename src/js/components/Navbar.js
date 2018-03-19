@@ -6,13 +6,28 @@ export default class Header extends React.Component {
     
     componentDidMount () {
 
+        var stickyNav = $('.navbar').offset().top;
+
+        console.log(stickyNav);
+
         $("nav").find("a").click(function(e) {
             e.preventDefault();
             var section = $(this).attr("href");
+            var scrollTop = $(window).scrollTop();
+            console.log(scrollTop);
+
             $("html, body").animate({
-                scrollTop: $(section).offset().top -500
+                scrollTop: $(section).offset().top -200
             });
         });
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > stickyNav ) {
+              $('.navbar').addClass('fixed-top');
+            } else{
+              $('.navbar').removeClass('fixed-top');
+            }
+          });
         
     }
     render() {
