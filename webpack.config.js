@@ -39,7 +39,8 @@ module.exports = {
     resolve: {
         alias:{
             Assets: path.resolve(__dirname, 'src/js/assets/'),
-            Helpers: path.resolve(__dirname, 'src/js/helpers/')
+            Helpers: path.resolve(__dirname, 'src/js/helpers/'),
+            fonts: path.resolve(__dirname, 'src/styles/base/fonts/')
             
         },
         extensions: ['*', '.js', '.jsx']
