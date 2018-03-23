@@ -4,7 +4,13 @@ var ReactDOMServer = require('react-dom/server');
 var ReactRouter = require('react-router');
 var path = require('path');
 
-router.get('/', function(request, response) {
+router.get('/login', function(request, response) {
+
+    console.log('hit!');
+    response.redirect((process.env.BACKEND_URI || 'http://localhost:8080') + '/login'); 
+});
+
+router.get('/*', function(request, response) {
     response.sendFile(path.resolve('dist/index.html')); 
 });
 
