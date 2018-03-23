@@ -6,6 +6,7 @@
   "scripts": {
     "start": "./node_modules/webpack/bin/webpack.js -p --progress && node server",
     "dev": "webpack-dev-server --mode development",
+    "prod": "webpack-dev-server --mode production",
     "server": "node server",
     "build": "webpack --mode production",
     "postinstall": "npm run build"
