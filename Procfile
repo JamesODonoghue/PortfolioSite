@@ -1,2 +1,2 @@
 api: npm start
-web: npm run prod
+web: npm run dev

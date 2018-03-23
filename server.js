@@ -6,16 +6,6 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
-var spotifyRedirect = null;
-
-switch (process.env.ENV) {
-  case 'Production':
-  break;
-  case 'Development': 
-    spotifyRedirect = 'http://localhost:8080';
-  break;
-}
-
 // var client_id = 'ceb9be711d7d46d8bdec35c613d38016'; // Your client id
 // var client_secret = '655b744453bb4c05867d29aba824a9f5'; // Your secret
 
@@ -25,6 +15,8 @@ var client_secret = process.env.CLIENT_SECRET; // Your client id
 var redirect_uri = process.env.REDIRECT_URI + '/callback'; // Your redirect uri
 
 // console.log(client_id);
+
+console.log(process.env.NODE_ENV);
 
 var spotifyApi = new SpotifyWebApi({
   clientId : client_id,
@@ -41,9 +33,6 @@ var generateRandomString = function(length) {
   }
   return text;
 };
-
-
-
 
 var app = express();
 
@@ -103,7 +92,7 @@ app.get('/callback', function(req, res) {
       spotifyApi.setRefreshToken(data.body['refresh_token']);
 
 
-      res.redirect((spotifyRedirect ? spotifyRedirect : process.env.REDIRECT_URI) + '/spotify/?' + querystring.stringify({
+      res.redirect((process.env.NODE_ENV !== 'production' ? 'http://localhost:8080' : process.env.REDIRECT_URI) + '/spotify/?' + querystring.stringify({
         access_token: data.body['access_token']
       }));
 

@@ -47,7 +47,14 @@ module.exports = {
     },
     devServer: {
         contentBase: './dist',
-        historyApiFallback: true
+        historyApiFallback: true,
+        port: process.env.PORT || 8080,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                pathRewrite: {"^/api" : ""}
+            }
+        }
     },
     plugins: [
         new ExtractTextPlugin({filename:'style.css'})
