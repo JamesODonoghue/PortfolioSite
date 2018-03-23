@@ -12,7 +12,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = process.env.CLIENT_ID; // Your client id
 var client_secret = process.env.CLIENT_SECRET; // Your client id
-var redirect_uri = process.env.REDIRECT_URI + '/callback'; // Your redirect uri
+var redirect_uri = process.env.REDIRECT_URI + process.env.PORT + '/callback'; // Your redirect uri
 
 // console.log(client_id);
 
@@ -92,7 +92,7 @@ app.get('/callback', function(req, res) {
       spotifyApi.setRefreshToken(data.body['refresh_token']);
 
 
-      res.redirect((process.env.NODE_ENV !== 'production' ? 'http://localhost:8080' : process.env.REDIRECT_URI) + '/spotify/?' + querystring.stringify({
+      res.redirect((process.env.REDIRECT_URI + process.env.PORT) + '/spotify/?' + querystring.stringify({
         access_token: data.body['access_token']
       }));
 
