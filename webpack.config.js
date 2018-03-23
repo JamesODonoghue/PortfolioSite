@@ -48,11 +48,10 @@ module.exports = {
     devServer: {
         contentBase: './dist',
         historyApiFallback: true,
-        port: 8080,
+        port: process.env.PORT || 3000,
         proxy: {
-            '/api': {
-                target: 'http://localhost:3000',
-                pathRewrite: {"^/api" : ""}
+            '/login': {
+                target: process.env.BACKEND_URI || 'http://localhost:8080'
             }
         }
     },

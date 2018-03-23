@@ -67,7 +67,7 @@ export default class Section extends React.Component {
                     </div>
                     <div className="section-content col-sm-3">
                         <h4><span className="badge badge-primary badge-pink">2014-Current</span></h4>
-                        <button className="btn btn-primary" onClick={() => window.location.href="/login"} > Log in to Spotify</button>
+                        <button className="btn btn-primary" onClick={() => window.location.href='/login'} > Log in to Spotify</button>
                     </div>
                 </div>
                 <div className="section row" id="skills">
