@@ -101,7 +101,7 @@ export default class Spotify extends React.Component {
 
 
         let userPlaylists = this.state.playlists ? this.state.playlists.map((playlist) => 
-                <div key={playlist.id} className="card col-sm-3">
+                <div key={playlist.id} className="card col-sm-4 col-md-2 bold">
                     <img className="card-img-top" src={playlist.images ? playlist.images[0].url: '...'}></img>
                     <div className="card-body">
                         <div className="card-title">
@@ -118,10 +118,10 @@ export default class Spotify extends React.Component {
                 </div>
 
                 <div className="container">
-                    <div className="input-group input-group-lg">
+                    {/* <div className="input-group input-group-lg">
                         <input type="text" className="form-control" aria-label="Search Playlists" aria-describedby="inputGroup-sizing-sm" placeholder="Filter Playlists"
                         onChange={this.onChange.bind(this)} onKeyDown={this.search.bind(this)}></input>
-                    </div>
+                    </div> */}
 
                     <ul className="list-group" style={{maxHeight: '250px', overflow: 'auto'}}>
                         {filteredList}

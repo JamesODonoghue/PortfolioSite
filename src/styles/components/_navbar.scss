@@ -12,10 +12,10 @@
     margin: 1em;
 }
 
-.nav {
-    flex-wrap: nowrap;
-}
-
 .navbar {
     background: #fff;
+}
+
+.navbar-collapse {
+    flex-grow: 0;
 }

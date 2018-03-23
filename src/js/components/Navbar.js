@@ -36,21 +36,29 @@ export default class Header extends React.Component {
             <div>
 
                 <nav className="navbar navbar-expand-lg navbar-light justify-content-center fixed">
-                    <ul className="nav nav-pills">
-                        <li className="nav-item">
-                            <a className="nav-link active" data-toggle="pill" href="#experience"> Experience </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" data-toggle="pill" href="#skills"> Skills </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" data-toggle="pill" href="#education"> Education </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" data-toggle="pill" href="#contact"> Contact </a>
-                        </li>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarContent">
+                        <ul className="nav nav-pills">
+                            <li className="nav-item">
+                                <a className="nav-link active" data-toggle="pill" href="#experience"> Experience </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="pill" href="#sample-projects"> Sample Projects </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="pill" href="#skills"> Skills </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="pill" href="#education"> Education </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" data-toggle="pill" href="#contact"> Contact </a>
+                            </li>
 
-                    </ul>
+                        </ul>
+                    </div>
 
                 </nav>
     

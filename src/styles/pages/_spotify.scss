@@ -1,23 +1,36 @@
 .spotify-page {
-    background-color: #000;
-    color: white;
+    // background-color: $spotify-green;
 
-    .list-group-item {
-        background-color: #000;
+    // .list-group-item {
+    //     background-color: #000;
+    // }
+
+    // .input-group-lg {
+    //     .form-control {
+    //         border-radius: 0;
+    //         background: #000;
+    //         color: white;
+    //         border: 0;
+    //     }
+    // }
+
+    // .card {
+    //     max-width: 150px;
+    //     background-color:inherit;
+    // }
+
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+    border-radius: 0;
+    margin: 15px;
+    bottom: 0;
+    transition: all .25s ease;
+
+    &:hover {
+        bottom: 10px;
+        cursor: pointer;
     }
-
-    .input-group-lg {
-        .form-control {
-            border-radius: 0;
-            background: #000;
-            color: white;
-            border: 0;
-        }
-    }
-
-    .card {
-        max-width: 150px;
-        background-color:inherit;
-    }
-
+    
 }

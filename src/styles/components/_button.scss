@@ -1,3 +1,17 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
+
+
+.btn-spotify {
+    background-color: #fff;
+    color: $spotify-green;
+    border-color: $spotify-green;
+    padding: 1.5em;
+
+    &:hover {
+        color: #fff;
+        background-color: $spotify-green;
+
+    }
+}

@@ -86,6 +86,13 @@ a {
     canvas {
         display:none;
     }
+    .navbar {
+        background: $light-grey;
+    }
+
+    .display-1 {
+        font-size: 3em;
+    }
   }
   
 //   @media(min-width: 940px){
