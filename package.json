@@ -4,10 +4,8 @@
   "description": "This is a website",
   "main": "webpack.config.js",
   "scripts": {
-    "server": "./node_modules/webpack/bin/webpack.js -p --progress && node server",
-    "start": "concurrently \"npm run server\" \"npm run dev\"",
+    "start": "node server.js",
     "dev": "webpack-dev-server --mode development",
-    "prod": "webpack-dev-server --mode production",
     "build": "webpack --mode production",
     "postinstall": "npm run build"
   },
