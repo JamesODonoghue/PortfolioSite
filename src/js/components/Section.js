@@ -51,19 +51,15 @@ export default class Section extends React.Component {
                         <p> Advent Software </p>
                         <p>
                             Use Agile Scrum to track tasks, create stories, deliver business features. 
-
                         </p>
                         <p>
                             Create generic, reusable UI components that communicated through pubsub. 
-
                         </p>
                         <p>
                             Write UI tests using NightwatchJS, as well as unit tests for generic components using Jasmine.  
-
                         </p>
                         <p>
                             Collaborate with the UX team to deliver a clean styled front end for our application powered by
-
                         </p>
                         <p>
                             Format and automate Jenkins logs using Splunk (allowed for robust queries on info/errors/warnings).  
@@ -71,6 +67,7 @@ export default class Section extends React.Component {
                     </div>
                     <div className="section-content col-sm-3">
                         <h4><span className="badge badge-primary badge-pink">2014-Current</span></h4>
+                        <button className="btn btn-primary" onClick={() => window.location.href="/login"} > Log in to Spotify</button>
                     </div>
                 </div>
                 <div className="section row" id="skills">

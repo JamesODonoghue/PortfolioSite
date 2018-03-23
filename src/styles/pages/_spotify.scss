@@ -1,0 +1,23 @@
+.spotify-page {
+    background-color: #000;
+    color: white;
+
+    .list-group-item {
+        background-color: #000;
+    }
+
+    .input-group-lg {
+        .form-control {
+            border-radius: 0;
+            background: #000;
+            color: white;
+            border: 0;
+        }
+    }
+
+    .card {
+        max-width: 150px;
+        background-color:inherit;
+    }
+
+}

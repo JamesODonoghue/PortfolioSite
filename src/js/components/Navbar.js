@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import { NavLink } from 'react-router-dom';
 
 
 export default class Header extends React.Component {
@@ -7,8 +8,6 @@ export default class Header extends React.Component {
     componentDidMount () {
 
         var stickyNav = $('.navbar').offset().top;
-
-        console.log(stickyNav);
 
         $("nav").find("a").click(function(e) {
             e.preventDefault();
@@ -50,8 +49,9 @@ export default class Header extends React.Component {
                         <li className="nav-item">
                             <a className="nav-link" data-toggle="pill" href="#contact"> Contact </a>
                         </li>
-                        
+
                     </ul>
+
                 </nav>
     
             </div>
