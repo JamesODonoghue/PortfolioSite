@@ -101,7 +101,7 @@ export default class Spotify extends React.Component {
 
 
         let userPlaylists = this.state.playlists ? this.state.playlists.map((playlist) => 
-                <div key={playlist.id} className="card col-sm-4 col-md-2 bold">
+                <div key={playlist.id} className="card spotify col-sm-4 col-md-2 bold">
                     <img className="card-img-top" src={playlist.images ? playlist.images[0].url: '...'}></img>
                     <div className="card-body">
                         <div className="card-title">
