@@ -8,16 +8,17 @@ var spotifyApi = new SpotifyWebApi({
   clientId : 'ceb9be711d7d46d8bdec35c613d38016'
 });
 
-const TracksModal = ({playListTracks}) => (
+const TracksModal = ({onClose, playListTracks}) => (
     <div className="my-modal">
         <div className="modal-content">
             <div className="modal-header">
-                <span className="close">&times;</span>
                 <h2>Modal Header</h2>
+                <span onClick={onClose} className="close">&times;</span>
+                
             </div>
             <div className="modal-body">
             <ul className="list-group">
-                    {playListTracks}
+                {playListTracks}
             </ul>
             </div>
             <div className="modal-footer">
@@ -31,8 +32,6 @@ const TracksModal = ({playListTracks}) => (
 class PlaylistTracks extends React.Component {
 
     render(){
-
-  
 
         return (
             <div className="my-modal">
@@ -103,11 +102,13 @@ export default class Spotify extends React.Component {
     }
 
     mapPlaylists(data){
+        
         return data.items.map(item => ({
             id: item.id,
             name: item.name,
             songs: item.tracks,
-            images: item.images
+            images: item.images,
+            owner: item.owner
         }))
     }
 
@@ -137,21 +138,26 @@ export default class Spotify extends React.Component {
 
     }
 
+    handleModalClose() {
+        this.setState({showModal: false});
+    }
+
     handlePlaylistClick(playlist, e) {
         
         let playlists = this.state.playlists;
 
-        this.setState({showModal:true})
-        
+
         let mapTracksToState = (data) => playlists.forEach((val, key) => {
             if(val.id === playlist.id){
                 playlists[key].items = data.items;
                 this.setState({playlists: playlists});
                 this.setState({currentPlayList:this.state.playlists[key] });
+                this.setState({showModal:true})
+                
             }
         });
 
-        spotifyApi.getPlaylistTracks(this.state.user.id, playlist.id)
+        spotifyApi.getPlaylistTracks(playlist.owner.id, playlist.id)
             .then(data => {
                 console.log(data);
                 mapTracksToState(data);
@@ -197,20 +203,37 @@ export default class Spotify extends React.Component {
                 </div>
 
                 <div className="container">
-                    {/* <div className="input-group input-group-lg">
-                        <input type="text" className="form-control" aria-label="Search Playlists" aria-describedby="inputGroup-sizing-sm" placeholder="Filter Playlists"
-                        onChange={this.onChange.bind(this)} onKeyDown={this.search.bind(this)}></input>
-                    </div> */}
 
-                    <ul className="list-group" style={{maxHeight: '250px', overflow: 'auto'}}>
+
+                    {/* <ul className="list-group" style={{maxHeight: '250px', overflow: 'auto'}}>
                         {filteredList}
-                    </ul>
+                    </ul> */}
 
                     <div className="row">
                         {userPlaylists}
                     </div>
 
-                    {this.state.showModal ? (<TracksModal playListTracks={playListTracks}/>) : ''}
+                    {this.state.showModal ? (
+                         <div className="my-modal">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h2>{this.state.currentPlayList ? this.state.currentPlayList.name : ''}</h2>
+                                    <span onClick={() => this.handleModalClose()} className="close">&times;</span>
+                                    
+                                </div>
+                                {/* <div className="input-group input-group-lg">
+                                    <input type="text" className="form-control" aria-label="Search Tracks" aria-describedby="inputGroup-sizing-sm" placeholder="Filter Playlists"
+                                    onChange={this.onChange.bind(this)} onKeyDown={this.search.bind(this)}></input>
+                                </div> */}
+                                <div className="modal-body">
+                                <ul className="list-group">
+                                    {playListTracks}
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    ) : ''}
+  
                 </div>
               
             </div>
