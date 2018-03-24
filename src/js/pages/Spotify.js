@@ -8,6 +8,52 @@ var spotifyApi = new SpotifyWebApi({
   clientId : 'ceb9be711d7d46d8bdec35c613d38016'
 });
 
+const TracksModal = ({playListTracks}) => (
+    <div className="my-modal">
+        <div className="modal-content">
+            <div className="modal-header">
+                <span className="close">&times;</span>
+                <h2>Modal Header</h2>
+            </div>
+            <div className="modal-body">
+            <ul className="list-group">
+                    {playListTracks}
+            </ul>
+            </div>
+            <div className="modal-footer">
+                <h3>Modal Footer</h3>
+            </div>
+        </div>
+    </div>
+
+);
+
+class PlaylistTracks extends React.Component {
+
+    render(){
+
+  
+
+        return (
+            <div className="my-modal">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <span className="close">&times;</span>
+                        <h2>Modal Header</h2>
+                    </div>
+                    <div className="modal-body">
+                       <ul className="list-group">
+                            {playListTracks}
+                       </ul>
+                    </div>
+                    <div className="modal-footer">
+                        <h3>Modal Footer</h3>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
 
 export default class Spotify extends React.Component {
 
@@ -36,8 +82,7 @@ export default class Spotify extends React.Component {
 
         spotifyApi.getMe()
             .then(data => {
-                console.log(data);
-                this.setState({user: { name: data.display_name}});
+                this.setState({user: { name: data.display_name, id: data.id}});
             }, function(err) {
                 console.log('Something went wrong!', err);
             });
@@ -59,8 +104,9 @@ export default class Spotify extends React.Component {
 
     mapPlaylists(data){
         return data.items.map(item => ({
+            id: item.id,
             name: item.name,
-            songs: [],
+            songs: item.tracks,
             images: item.images
         }))
     }
@@ -88,10 +134,40 @@ export default class Spotify extends React.Component {
     onChange(e) {
         this.setState({filterString: e.target.value});
 
-        console.log(this.state.filterString);
+
+    }
+
+    handlePlaylistClick(playlist, e) {
+        
+        let playlists = this.state.playlists;
+
+        this.setState({showModal:true})
+        
+        let mapTracksToState = (data) => playlists.forEach((val, key) => {
+            if(val.id === playlist.id){
+                playlists[key].items = data.items;
+                this.setState({playlists: playlists});
+                this.setState({currentPlayList:this.state.playlists[key] });
+            }
+        });
+
+        spotifyApi.getPlaylistTracks(this.state.user.id, playlist.id)
+            .then(data => {
+                console.log(data);
+                mapTracksToState(data);
+                // this.setState(...this.state, {playlists: playlist.id})
+            })
+
 
     }
     render() {
+
+        let playListTracks = this.state.currentPlayList ? this.state.currentPlayList.items.map((item) => 
+            <li key={item.track.id} className="list-group-item">
+                {item.track.name}
+            </li>
+
+        ) : [];
 
         let filteredList = this.state.filteredList ? this.state.filteredList.tracks.items.map((track) => 
             <li key={track.id} className="list-group-item">
@@ -101,19 +177,22 @@ export default class Spotify extends React.Component {
 
 
         let userPlaylists = this.state.playlists ? this.state.playlists.map((playlist) => 
-                <div key={playlist.id} className="card spotify col-sm-4 col-md-2 bold">
+                <div key={playlist.id} onClick={(e) => this.handlePlaylistClick(playlist, e) } className="card spotify bold">
                     <img className="card-img-top" src={playlist.images ? playlist.images[0].url: '...'}></img>
                     <div className="card-body">
                         <div className="card-title">
                             {playlist.name}
+                        </div>
+                        <div>
+                            
                         </div>
                     </div>
                 </div>
         ) : [];
 
         return (
-            <div className="spotify-page container">
-                <div className="display-1">
+            <div className="spotify-page">
+                <div className="row container display-1">
                     {this.state.user.name}
                 </div>
 
@@ -130,7 +209,10 @@ export default class Spotify extends React.Component {
                     <div className="row">
                         {userPlaylists}
                     </div>
+
+                    {this.state.showModal ? (<TracksModal playListTracks={playListTracks}/>) : ''}
                 </div>
+              
             </div>
 
         )

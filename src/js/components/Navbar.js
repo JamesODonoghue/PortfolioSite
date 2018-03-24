@@ -36,8 +36,8 @@ export default class Header extends React.Component {
             <div>
 
                 <nav className="navbar navbar-expand-lg navbar-light justify-content-center fixed">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar.-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarContent">
                         <ul className="nav nav-pills">
