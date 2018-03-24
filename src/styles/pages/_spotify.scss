@@ -29,6 +29,7 @@
     bottom: 0;
     transition: all .25s ease;
     padding: 0;
+    max-width: 25em;
 
     .card-img-top {
         border-radius: 0;
@@ -39,4 +40,10 @@
         cursor: pointer;
     }
     
+}
+
+
+.my-container {
+    @extend .container;
+    max-width: 1500px;
 }

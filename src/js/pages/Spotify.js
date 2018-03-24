@@ -169,7 +169,7 @@ export default class Spotify extends React.Component {
     render() {
 
         let playListTracks = this.state.currentPlayList ? this.state.currentPlayList.items.map((item) => 
-            <li key={item.track.id} className="list-group-item">
+            <li key={item.track.id} className="list-group-item rounded-0">
                 {item.track.name}
             </li>
 
@@ -198,11 +198,11 @@ export default class Spotify extends React.Component {
 
         return (
             <div className="spotify-page">
-                <div className="row container display-1">
+                <div className="container display-1 text-center">
                     {this.state.user.name}
                 </div>
 
-                <div className="container">
+                <div className="my-container">
 
 
                     {/* <ul className="list-group" style={{maxHeight: '250px', overflow: 'auto'}}>
@@ -214,7 +214,7 @@ export default class Spotify extends React.Component {
                     </div>
 
                     {this.state.showModal ? (
-                         <div className="my-modal">
+                         <div className="my-modal ">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h2>{this.state.currentPlayList ? this.state.currentPlayList.name : ''}</h2>
@@ -226,7 +226,7 @@ export default class Spotify extends React.Component {
                                     onChange={this.onChange.bind(this)} onKeyDown={this.search.bind(this)}></input>
                                 </div> */}
                                 <div className="modal-body">
-                                <ul className="list-group">
+                                <ul className="list-group ">
                                     {playListTracks}
                                 </ul>
                                 </div>
