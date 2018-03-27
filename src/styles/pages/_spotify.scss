@@ -1,10 +1,15 @@
 .spotify-page {
-    background-color: #f4f7f6;
+    background-color: #2ecc71;
     font-family: 'Helvetica';
 
     .list-group {
         overflow: auto;
         max-height: 400px;
+    }
+
+    .header {
+        color: white;
+        padding: 1em;
     }
 
     // .list-group-item {
@@ -65,4 +70,36 @@
     border-bottom: 1px solid $mid-grey;
     margin: 0;
     padding: .5em;
+}
+
+.user-image {
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dashboard {
+    // padding:1em;
+}
+
+.my-button {
+    border: 2px solid #fff;
+    border-radius: 0;
+    background: none;
+    color: #fff;
+    transition: all .3s;
+    padding: 2em;
+
+    &:hover{
+        background: #fff;
+        color: #2ecc71;
+    }
+}
+
+.header-left {
+    float: left;
+}
+
+.header-right {
+    text-align: right;
 }

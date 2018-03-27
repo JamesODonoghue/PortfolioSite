@@ -1,5 +1,6 @@
 import React from 'react';
 import queryString from 'query-string';
+import _ from 'lodash';
 
 
 import SpotifyWebApi from 'spotify-web-api-js';
@@ -91,7 +92,8 @@ export default class Spotify extends React.Component {
 
         spotifyApi.getMe()
             .then(data => {
-                this.setState({user: { name: data.display_name, id: data.id}});
+                // console.log(data);
+                this.setState({user: { name: data.display_name, id: data.id, images: data.images, followers: data.followers.total}});
             }, function(err) {
                 console.log('Something went wrong!', err);
             });
@@ -102,7 +104,7 @@ export default class Spotify extends React.Component {
 
         spotifyApi.getUserPlaylists()
         .then(data => {
-            console.log(data);
+            // console.log(data);
             this.setState({ playlists: this.mapPlaylists(data)});
 
         }, function(err) {
@@ -113,7 +115,7 @@ export default class Spotify extends React.Component {
 
     mapPlaylists(data){
 
-        console.log(data);
+        // console.log(data);
         
         return data.items.map(item => ({
             id: item.id,
@@ -132,7 +134,7 @@ export default class Spotify extends React.Component {
         if(query){
             spotifyApi.search(query, types)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 this.setState({filteredList: {
                     tracks: data.tracks ? data.tracks : null,
                     artists: data.artists ? data.artists: null
@@ -142,6 +144,23 @@ export default class Spotify extends React.Component {
         }
 
 
+    }
+
+    getFeatures(playlist) {
+
+        console.log(playlist);
+        let playListTrackIds = [];
+
+        playListTrackIds = _.map(playlist.items, 'track.id');
+
+        // console.log(playListTrackIds)
+        spotifyApi.getAudioFeaturesForTracks(playListTrackIds)
+            .then(data => {
+                console.log(data);
+                this.setState(...this.state, {audioFeatures: data.audio_features})
+
+                console.log(this.state);
+            })
     }
 
     onChange(e) {
@@ -163,13 +182,14 @@ export default class Spotify extends React.Component {
             if(val.id === playlist.id){
                 playlists[key].items = data.items;
                 this.setState({playlists: playlists, currentPlayList:this.state.playlists[key], showModal:true });
+                this.getFeatures(this.state.currentPlayList);
                 
             }
         });
 
         spotifyApi.getPlaylistTracks(playlist.owner.id, playlist.id)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 mapTracksToState(data);
                 // this.setState(...this.state, {playlists: playlist.id})
             })
@@ -178,7 +198,7 @@ export default class Spotify extends React.Component {
     }
     render() {
 
-        const {showModal, currentPlayList} = this.state;
+        const {showModal, currentPlayList, user, audioFeatures} = this.state;
 
         let playListTracks = currentPlayList ? currentPlayList.items.map((item) => 
             <li key={item.track.id} className="list-group-item rounded-0">
@@ -187,43 +207,64 @@ export default class Spotify extends React.Component {
 
         ) : [];
 
-        let filteredList = this.state.filteredList ? this.state.filteredList.tracks.items.map((track) => 
-            <li key={track.id} className="list-group-item">
-                {track.name}
-            </li>
-        ) : [];
+        // let filteredList = this.state.filteredList ? this.state.filteredList.tracks.items.map((track) => 
+        //     <li key={track.id} className="list-group-item">
+        //         {track.name}
+        //     </li>
+        // ) : [];
 
 
         let userPlaylists = this.state.playlists ? this.state.playlists.map((playlist) => 
-                <div    
-                    key={playlist.id} onClick={(e) => this.handlePlaylistClick(playlist, e) } 
-                    // style={{height: playlist.images[0].height + 60, width: playlist.images[0].width }} 
-                    className="card spotify bold">
-
-                    <img className="card-img-top" src={playlist.images ? playlist.images[0].url: '...'}></img>
-                    <div className="card-body">
-                        <div className="card-title boldest">
-                            {playlist.name}
-                        </div>
-                        <div>
-                            
-                        </div>
-                    </div>
+            <div key={playlist.id} onClick={(e) => this.handlePlaylistClick(playlist, e) } className="card spotify bold">
+                <img className="card-img-top" src={playlist.images ? playlist.images[0].url: '...'}></img>
+                <div className="card-body">
+                    <h5 className="card-title boldest">
+                        {playlist.name}
+                    </h5>
+                    <p className="cart-text"> Some sample data about this playlist</p>
                 </div>
+                <div className="card-footer">
+                    <small className="text-muted"></small>
+                </div>
+            </div>
         ) : [];
 
 
         return (
             <div className="spotify-page">
-
-                    <div className="site-header">
-
-                        <div className="jumbotron">
-                            <h1 className="boldest"> {this.state.user.name}</h1>
-                        </div>
+                <div className="header">
+                    <div className="header-left display-3 boldest"> Playlist Analyzer </div>
+                    <div className="header-right">
+                        <div className="boldest"> {user.name}</div>
+                        <div className="boldest"> {user.followers} followers </div>
+                        <span>
+                            <img className="user-image" src={user.images ? user.images[0].url : ''}></img>
+                        </span>
+                        
                     </div>
 
+
+                    
+     
+                </div>
+
                 <div className="my-container">
+                    <div className="dashboard">
+                        <div className="row">
+                            {/* <div className="card spotify no-hover">
+                                <div className="card-body">{audioFeatures ? audioFeatures.length : null}</div>
+                            </div>
+                             */}
+                            {/* <button className="btn my-button"> This is a sample button</button> */}
+                            {/* <div className="col-sm">
+                            <button className="btn my-button"> This is a sample button</button>
+                            </div>
+                            <div className="col-sm">
+                            <button className="btn my-button"> This is a sample button</button>
+                            </div> */}
+                        </div>
+
+                    </div>
 
 
                     {/* <ul className="list-group" style={{maxHeight: '250px', overflow: 'auto'}}>
