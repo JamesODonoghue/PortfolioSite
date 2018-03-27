@@ -438,6 +438,12 @@ html, body, h1, h3 {
   font-weight: 100;
   webkit-font-smoothing: antialiased; }
 
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4em; }
+  h6 {
+    font-size: 1.5em; } }
+
 /**
  * Basic typography style for copy text
  */
@@ -456,6 +462,9 @@ html, body, h1, h3 {
 .boldest {
   font-weight: 800; }
 
+h1 {
+  margin: 0; }
+
 /**
  * Clear inner floats
  */
@@ -470,7 +479,7 @@ html, body, h1, h3 {
  * 2. Center it in the viewport
  * 3. Leave some space on the edges, especially valuable on small screens
  */
-.container {
+.container, .my-container, .spotify-banner {
   max-width: 1180px;
   /* 1 */
   margin-left: auto;
@@ -511,8 +520,24 @@ html, body, h1, h3 {
   position: absolute;
   width: 1px; }
 
+.site-title {
+  font-size: 2em; }
+
+.site-subtitle {
+  font-size: 1em; }
+
 .section {
   min-height: 600px; }
+
+.no-border {
+  border: 0; }
+
+.resume {
+  top: 250px; }
+
+.section {
+  min-height: 300px;
+  padding-bottom: 150px; }
 
 .btn-spotify {
   background-color: #fff;
@@ -522,6 +547,9 @@ html, body, h1, h3 {
   .btn-spotify:hover {
     color: #fff;
     background-color: #1db954; }
+
+.my-modal {
+  padding: 0; }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #E91E63;
@@ -577,17 +605,11 @@ html, body, h1, h3 {
   width: 100%;
   top: 0;
   z-index: 9999; }
-  .site-header .jumbotron {
+  .site-header .jumbotron, .site-header .spotify-banner {
     margin-bottom: 0;
     background: #000;
     color: #fff;
     border-radius: 0; }
-
-.site-title {
-  font-size: 4em; }
-
-.site-subtitle {
-  font-size: 2em; }
 
 .resume {
   top: 610px;
@@ -612,29 +634,23 @@ a {
 .badge-pink {
   background-color: #E91E63; }
 
-@media (max-width: 380px) {
-  .site-title {
-    font-size: 2em; }
-  .site-subtitle {
-    font-size: 1em; }
-  .resume {
-    top: 250px; }
-  .section {
-    min-height: 300px;
-    padding-bottom: 150px; }
-  canvas {
-    display: none; }
-  .navbar {
-    background: #ededed; }
-  .display-1 {
-    font-size: 3em; } }
+.spotify-page {
+  background-color: #f4f7f6;
+  font-family: "Helvetica"; }
 
 .card.spotify {
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  border: 0;
   border-radius: 0;
   margin: 15px;
   bottom: 0;
-  transition: all .25s ease; }
+  transition: all .25s ease;
+  padding: 0;
+  max-width: 25em; }
+  .card.spotify .card-img-top {
+    border-radius: 0; }
   .card.spotify:hover {
     bottom: 10px;
     cursor: pointer; }
+
+.my-container {
+  max-width: 1500px; }

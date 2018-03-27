@@ -77,7 +77,7 @@ export default class Section extends React.Component {
                     <div className="section-content col-sm-6">
                     <div className="card no-border">
                         <div className="card-title">
-                            <h3>Spotify client that lets you view playlists</h3>
+                            <h4>Spotify client that lets you view playlists</h4>
                         </div>
                         <button className="btn btn-spotify" onClick={() => window.location.href='/login'} > Log in to Spotify</button>
                     </div>

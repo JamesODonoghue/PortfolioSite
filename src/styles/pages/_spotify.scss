@@ -29,7 +29,7 @@
     bottom: 0;
     transition: all .25s ease;
     padding: 0;
-    max-width: 25em;
+    width: 100%;
 
     .card-img-top {
         border-radius: 0;
@@ -46,4 +46,21 @@
 .my-container {
     @extend .container;
     max-width: 1500px;
+}
+
+.spotify-banner {
+    @extend .container;
+    @extend .jumbotron;
+}
+
+.list-group {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.list-group-item {
+    border: 0;
+    border-bottom: 1px solid $mid-grey;
+    margin: 0;
+    padding: .5em;
 }

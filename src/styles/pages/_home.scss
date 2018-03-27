@@ -20,15 +20,6 @@
     
 }
 
-
-.site-title {
-    font-size: 4em;
-}
-
-.site-subtitle {
-    font-size: 2em;
-}
-
 .resume {
     top:610px;
     z-index: -2;
@@ -65,35 +56,6 @@ a {
 
 
 
-@media(max-width: 380px){
-    .site-title{
-        font-size: 2em;
-    }
-
-    .site-subtitle {
-        font-size: 1em;
-    }
-
-    .resume {
-        top: 250px;
-    }
-
-    .section {
-        min-height:300px;
-        padding-bottom: 150px;
-    }
-  
-    canvas {
-        display:none;
-    }
-    .navbar {
-        background: $light-grey;
-    }
-
-    .display-1 {
-        font-size: 3em;
-    }
-  }
   
 //   @media(min-width: 940px){
 //     .site-title {

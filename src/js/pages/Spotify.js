@@ -1,7 +1,13 @@
 import React from 'react';
 import queryString from 'query-string';
 
+
 import SpotifyWebApi from 'spotify-web-api-js';
+
+import Modal from '../components/Modal';
+
+// import 'react-responsive-modal/lib/react-responsive-modal.css';
+// import Modal from 'react-responsive-modal/lib/css';
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
@@ -59,8 +65,12 @@ export default class Spotify extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: {}
+            user: {},
+            currentPlayList: null,
+            playlists: [],
+            showModal: false
         };
+
     }
     componentDidMount() {
         this.parseAccessToken();
@@ -102,6 +112,8 @@ export default class Spotify extends React.Component {
     }
 
     mapPlaylists(data){
+
+        console.log(data);
         
         return data.items.map(item => ({
             id: item.id,
@@ -138,7 +150,7 @@ export default class Spotify extends React.Component {
 
     }
 
-    handleModalClose() {
+    handleModalClose = () => {
         this.setState({showModal: false});
     }
 
@@ -150,9 +162,7 @@ export default class Spotify extends React.Component {
         let mapTracksToState = (data) => playlists.forEach((val, key) => {
             if(val.id === playlist.id){
                 playlists[key].items = data.items;
-                this.setState({playlists: playlists});
-                this.setState({currentPlayList:this.state.playlists[key] });
-                this.setState({showModal:true})
+                this.setState({playlists: playlists, currentPlayList:this.state.playlists[key], showModal:true });
                 
             }
         });
@@ -168,7 +178,9 @@ export default class Spotify extends React.Component {
     }
     render() {
 
-        let playListTracks = this.state.currentPlayList ? this.state.currentPlayList.items.map((item) => 
+        const {showModal, currentPlayList} = this.state;
+
+        let playListTracks = currentPlayList ? currentPlayList.items.map((item) => 
             <li key={item.track.id} className="list-group-item rounded-0">
                 {item.track.name}
             </li>
@@ -183,10 +195,14 @@ export default class Spotify extends React.Component {
 
 
         let userPlaylists = this.state.playlists ? this.state.playlists.map((playlist) => 
-                <div key={playlist.id} onClick={(e) => this.handlePlaylistClick(playlist, e) } className="card spotify bold">
+                <div    
+                    key={playlist.id} onClick={(e) => this.handlePlaylistClick(playlist, e) } 
+                    // style={{height: playlist.images[0].height + 60, width: playlist.images[0].width }} 
+                    className="card spotify bold">
+
                     <img className="card-img-top" src={playlist.images ? playlist.images[0].url: '...'}></img>
                     <div className="card-body">
-                        <div className="card-title">
+                        <div className="card-title boldest">
                             {playlist.name}
                         </div>
                         <div>
@@ -196,11 +212,16 @@ export default class Spotify extends React.Component {
                 </div>
         ) : [];
 
+
         return (
             <div className="spotify-page">
-                <div className="container display-1 text-center">
-                    {this.state.user.name}
-                </div>
+
+                    <div className="site-header">
+
+                        <div className="jumbotron">
+                            <h1 className="boldest"> {this.state.user.name}</h1>
+                        </div>
+                    </div>
 
                 <div className="my-container">
 
@@ -213,29 +234,23 @@ export default class Spotify extends React.Component {
                         {userPlaylists}
                     </div>
 
-                    {this.state.showModal ? (
-                         <div className="my-modal ">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h2>{this.state.currentPlayList ? this.state.currentPlayList.name : ''}</h2>
-                                    <span onClick={() => this.handleModalClose()} className="close">&times;</span>
-                                    
-                                </div>
-                                {/* <div className="input-group input-group-lg">
-                                    <input type="text" className="form-control" aria-label="Search Tracks" aria-describedby="inputGroup-sizing-sm" placeholder="Filter Playlists"
-                                    onChange={this.onChange.bind(this)} onKeyDown={this.search.bind(this)}></input>
-                                </div> */}
-                                <div className="modal-body">
-                                <ul className="list-group ">
-                                    {playListTracks}
-                                </ul>
-                                </div>
-                            </div>
-                        </div>
-                    ) : ''}
-  
+                    <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
+                        <h2>{currentPlayList ? currentPlayList.name : ''}</h2>
+                        <ul className="list-group ">
+                            {playListTracks}
+                        </ul>
+                    
+                    </Modal>
+                
+                    {/* <Modal classNames={{overlay: 'my-modal'}} open={showModal} onClose={this.handleModalClose}>
+                        <h2>{currentPlayList ? currentPlayList.name : ''}</h2>
+                        <ul className="list-group ">
+                            {playListTracks}
+                        </ul>
+                    
+                    </Modal> */}
                 </div>
-              
+                    
             </div>
 
         )
