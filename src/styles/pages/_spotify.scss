@@ -1,6 +1,11 @@
 .spotify-page {
     background-color: #f4f7f6;
-    font-family: 'Helvetica'
+    font-family: 'Helvetica';
+
+    .list-group {
+        overflow: auto;
+        max-height: 400px;
+    }
 
     // .list-group-item {
     //     background-color: #000;
@@ -53,10 +58,7 @@
     @extend .jumbotron;
 }
 
-.list-group {
-    overflow: auto;
-    max-height: 500px;
-}
+
 
 .list-group-item {
     border: 0;
