@@ -77,9 +77,16 @@ export default class Section extends React.Component {
                     <div className="section-content col-sm-6">
                     <div className="card no-border">
                         <div className="card-title">
-                            <h4>Spotify client that lets you view playlists</h4>
+                            <h4>Custom React App that uses the Spotify API</h4>
                         </div>
                         <button className="btn btn-spotify" onClick={() => window.location.href='/login'} > Log in to Spotify</button>
+
+                        <div className="card-body">
+                            <div className="card-title bold"> Sample Spotify Credentials</div>
+                            <div className="card-text "> Email: spotifyreact@gmail.com</div>
+                            <div className="card-text"> Password: Example</div>
+                            
+                        </div>
                     </div>
                     </div>
                     <div className="section-content col-sm-3"></div>
