@@ -53,10 +53,7 @@
 }
 
 
-.my-container {
-    @extend .container;
-    max-width: 1500px;
-}
+
 
 .spotify-banner {
     @extend .container;
@@ -76,10 +73,7 @@
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
-}
-
-.dashboard {
-    // padding:1em;
+    margin-top: 10px;
 }
 
 .my-button {
@@ -94,12 +88,4 @@
         background: #fff;
         color: #2ecc71;
     }
-}
-
-.header-left {
-    float: left;
-}
-
-.header-right {
-    text-align: right;
 }

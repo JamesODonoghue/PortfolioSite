@@ -68,7 +68,7 @@ export default class Spotify extends React.Component {
         this.state = {
             user: {},
             currentPlayList: null,
-            playlists: [],
+            playlists: null,
             showModal: false
         };
 
@@ -198,7 +198,13 @@ export default class Spotify extends React.Component {
     }
     render() {
 
-        const {showModal, currentPlayList, user, audioFeatures} = this.state;
+        const {showModal, playlists, currentPlayList, user, audioFeatures} = this.state;
+
+        let emptyPlaylists = (
+            <div style={{height: '100%', width: '100%'}} className="display-2 boldest">
+                You have no playlists you luddite.
+            </div>
+        );
 
         let playListTracks = currentPlayList ? currentPlayList.items.map((item) => 
             <li key={item.track.id} className="list-group-item rounded-0">
@@ -207,14 +213,7 @@ export default class Spotify extends React.Component {
 
         ) : [];
 
-        // let filteredList = this.state.filteredList ? this.state.filteredList.tracks.items.map((track) => 
-        //     <li key={track.id} className="list-group-item">
-        //         {track.name}
-        //     </li>
-        // ) : [];
-
-
-        let userPlaylists = this.state.playlists ? this.state.playlists.map((playlist) => 
+        let userPlaylists = playlists && playlists.length !== 0 ? playlists.map((playlist) => 
             <div key={playlist.id} onClick={(e) => this.handlePlaylistClick(playlist, e) } className="card spotify bold">
                 <img className="card-img-top" src={playlist.images && playlist.images[0] ? playlist.images[0].url: '...'}></img>
                 <div className="card-body">
@@ -223,56 +222,35 @@ export default class Spotify extends React.Component {
                     </h5>
                     <p className="cart-text"> Some sample data about this playlist</p>
                 </div>
-                <div className="card-footer">
-                    <small className="text-muted"></small>
-                </div>
             </div>
         ) : [];
 
 
         return (
             <div className="spotify-page">
-                <div className="header">
+                <div className="header container">
                     <div className="header-left display-3 boldest"> Playlist Analyzer </div>
-                    <div className="header-right">
-                        <div className="boldest"> {user.name}</div>
-                        <div className="boldest"> {user.followers} followers </div>
-                        <span>
-                            <img className="user-image" src={user.images && user.images[0] ? user.images[0].url : ''}></img>
-                        </span>
+                    <div className="boldest"> {user.name}</div>
+                    <div className="boldest"> {user.followers} followers </div>
+                    <span>
+                        {
+                            user.images && user.images.length !== 0 ? 
+                                <img className="user-image" src={user.images[0].url}></img> 
+                            : ''
+                        }
+                    </span>
                         
-                    </div>
-
-
-                    
-     
                 </div>
-
-                <div className="my-container">
+     
+                <div className="container">
                     <div className="dashboard">
                         <div className="row">
-                            {/* <div className="card spotify no-hover">
-                                <div className="card-body">{audioFeatures ? audioFeatures.length : null}</div>
-                            </div>
-                             */}
-                            {/* <button className="btn my-button"> This is a sample button</button> */}
-                            {/* <div className="col-sm">
-                            <button className="btn my-button"> This is a sample button</button>
-                            </div>
-                            <div className="col-sm">
-                            <button className="btn my-button"> This is a sample button</button>
-                            </div> */}
                         </div>
 
                     </div>
 
-
-                    {/* <ul className="list-group" style={{maxHeight: '250px', overflow: 'auto'}}>
-                        {filteredList}
-                    </ul> */}
-
                     <div className="row">
-                        {userPlaylists}
+                        {playlists === null ? null : userPlaylists && userPlaylists.length !== 0 ? userPlaylists : emptyPlaylists}
                     </div>
 
                     <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
@@ -282,14 +260,6 @@ export default class Spotify extends React.Component {
                         </ul>
                     
                     </Modal>
-                
-                    {/* <Modal classNames={{overlay: 'my-modal'}} open={showModal} onClose={this.handleModalClose}>
-                        <h2>{currentPlayList ? currentPlayList.name : ''}</h2>
-                        <ul className="list-group ">
-                            {playListTracks}
-                        </ul>
-                    
-                    </Modal> */}
                 </div>
                     
             </div>
