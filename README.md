@@ -20,24 +20,19 @@ First run npm install
 ```
 npm install
 ```
+This installs necessary dependencies as well as running a postinstall script that builds and bundles 
 
-Then after its finished building, run npm run dev
+Then after its finished building, npm run dev
 
 ```
 npm run dev
 ```
 
+This will start the webpack dev server at http://localhost:3000
+
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+No tests yet
 
 ### And coding style tests
 
@@ -53,7 +48,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-ReactJS and Deployed on Heroku
+ReactJS and React-Router. Deployed on Heroku
+
+Styled using Bootstrap 4 and Sass
 
 ## Authors
 
