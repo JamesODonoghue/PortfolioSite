@@ -20,5 +20,11 @@
     .card.spotify {
       max-width: 20em;
     }
+
+    .spotify-page {
+      .list-group {
+          max-height: 600px;
+      }
+    }  
   
   }

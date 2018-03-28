@@ -25,15 +25,9 @@ class Playlists extends React.Component {
     return (
         <div className="row">
             {userPlaylists}
-           
-
         </div>
     );
   }
-
-//   componentDidMount() {
-//     this.setState({ someKey: 'otherValue' });
-//   }
 }
 
 export default Playlists;
