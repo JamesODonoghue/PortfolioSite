@@ -14,7 +14,7 @@ class Playlists extends React.Component {
         <div key={playlist.id} onClick={(e) => this.props.handleClick(playlist, e) } className="card spotify">
             <img className="card-img-top" src={playlist.images && playlist.images[0] ? playlist.images[0].url: '...'}></img>
             <div className="card-body">
-                <h5 className="card-title boldest">
+                <h5 className="card-title">
                     {playlist.name}
                 </h5>
                 <div className="row">
