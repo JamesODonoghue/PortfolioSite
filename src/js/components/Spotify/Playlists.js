@@ -17,7 +17,20 @@ class Playlists extends React.Component {
                 <h5 className="card-title boldest">
                     {playlist.name}
                 </h5>
-                <p className="cart-text"> Some sample data about this playlist</p>
+                <div className="row">
+                    <div className="col text-center m-1"> 
+                        <span className="badge badge-pink" >{playlist.danceAverage.toFixed(0)}</span>
+
+                    </div>
+                    <div className="col text-center m-1">
+                        <span className="badge badge-success " >{playlist.energyAverage.toFixed(0)}</span>
+                    
+                    </div>
+                    <div className="col text-center m-1">
+                        <span className="badge badge-info" >{playlist.tempoAverage.toFixed(0)}</span>
+                    
+                    </div>
+                </div>
             </div>
         </div>
     );

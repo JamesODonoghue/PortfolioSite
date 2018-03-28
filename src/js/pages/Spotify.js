@@ -21,7 +21,7 @@ export default class Spotify extends React.Component {
         super();
         this.state = {
             user: {},
-            currentPlayList: null,
+            currentPlaylist: null,
             playlists: null,
             showModal: false,
             error: null
@@ -31,8 +31,8 @@ export default class Spotify extends React.Component {
     componentDidMount() {
         this.parseAccessToken();
         this.getUserData();
-        this.getPlaylists();
-        this.getMyTopTracks();
+        this.getPlaylistsAndTracks();
+        // this.getMyTopTracks();
     }
 
     parseAccessToken() {
@@ -72,42 +72,83 @@ export default class Spotify extends React.Component {
             });
 
     }
-
     getPlaylists() {
-
-        spotifyApi.getUserPlaylists()
-            .then(data => {
-                this.setState({ playlists: this.mapPlaylists(data)});
-            }).catch(error => {
-                this.handleError(error);
-            });
+        return spotifyApi.getUserPlaylists();
 
     }
 
-    mapPlaylists(data){
-        
-        return data.items.map(item => ({
-            id: item.id,
-            name: item.name,
-            songs: item.tracks,
-            images: item.images,
-            owner: item.owner
-        }))
+    getPlaylistsAndTracks() {
+
+        var playlists = [];
+
+        // Huge Promise chaining which chaings together many promises for upfront loading of all playlists/tracks/track metadata
+
+        this.getPlaylists()
+            .then(data => {
+                playlists = data.items;
+                return data.items;
+                
+            }).then(playlists => {
+                console.log(playlists);
+                let getAllTracks = (playlistArray) => {
+                    return Promise.all(playlistArray.map(getPlaylistTracks));
+                }
+                let getPlaylistTracks = (playlist) => {
+                    return spotifyApi.getGeneric(playlist.tracks.href);
+
+                }
+                return getAllTracks(playlists);
+                
+            }).then(data => {
+                let promises = [];
+
+                let getAllTrackFeatures = (tracksArray) => {
+                    return Promise.all(tracksArray.map(getTrackFeatures));
+                }
+                let getTrackFeatures = (tracks) => {
+                    let playListTrackIds = _.map(tracks, 'track.id'); 
+                    promises.push(spotifyApi.getAudioFeaturesForTracks(playListTrackIds))
+                }
+            
+                data.forEach((val, key) => {
+                    playlists[key].tracks = val.items;
+                    getTrackFeatures(playlists[key].tracks)
+                });
+
+                return Promise.all(promises);
+
+                
+            }).then(data => {
+                data.forEach((val, key) => {
+                    let sum = 0;
+                    playlists[key].audio_features = val.audio_features;
+                    playlists[key].danceTotal = val.audio_features.reduce((total, value) => {
+                        return sum += value.danceability ;
+                    });
+                    playlists[key].energyTotal = val.audio_features.reduce((total, value) => {
+                        return sum += value.energy ;
+                    });
+                    playlists[key].tempoTotal = val.audio_features.reduce((total, value) => {
+                        return sum += value.tempo ;
+                    });
+                    playlists[key].danceAverage = (playlists[key].danceTotal / playlists[key].tracks.length) * 100;
+                    playlists[key].energyAverage = (playlists[key].energyTotal / playlists[key].tracks.length) * 100;
+                    playlists[key].tempoAverage = (playlists[key].tempoTotal / playlists[key].tracks.length);
+                    
+                });
+
+                this.setState({playlists: playlists });
+
+            });
     }
 
     getFeatures(playlist) {
-
-        console.log(playlist);
         let playListTrackIds = [];
 
-        playListTrackIds = _.map(playlist.items, 'track.id');
+        playListTrackIds = _.map(playlist.tracks, 'track.id');
 
-        spotifyApi.getAudioFeaturesForTracks(playListTrackIds)
-            .then(data => {
-                this.setState(...this.state, {audioFeatures: data.audio_features})
-            }).catch(error => {
-                this.handleError(error);
-            })
+        return spotifyApi.getAudioFeaturesForTracks(playListTrackIds)
+           
     }
 
     handleModalClose = () => {
@@ -117,26 +158,13 @@ export default class Spotify extends React.Component {
     handlePlaylistClick = (playlist, e) => {
         
         let playlists = this.state.playlists;
-
-        let mapTracksToState = (data) => playlists.forEach((val, key) => {
-            if(val.id === playlist.id){
-                playlists[key].items = data.items;
-                this.setState({playlists: playlists, currentPlayList:this.state.playlists[key], showModal:true });
-                this.getFeatures(this.state.currentPlayList);
-                
-            }
-        });
-
-        spotifyApi.getPlaylistTracks(playlist.owner.id, playlist.id)
-            .then(data => {
-                mapTracksToState(data);
-            })
-
+        let currentPlaylist = _.find(playlists, {id: playlist.id});
+        this.setState({currentPlaylist: currentPlaylist, showModal:true });
 
     }
     render() {
 
-        const {showModal, playlists, currentPlayList, user, audioFeatures, error} = this.state;
+        const {showModal, playlists, currentPlaylist, user, audioFeatures, error} = this.state;
 
         const userImageUrl = user.images && user.images.length !== 0 ? user.images[0].url : null;
 
@@ -146,7 +174,7 @@ export default class Spotify extends React.Component {
             </div>
         );
 
-        let playListTracks = currentPlayList ? currentPlayList.items.map((item) => 
+        let playListTracks = currentPlaylist ? currentPlaylist.tracks.map((item) => 
             <li key={item.track.id} className="list-group-item rounded-0">
                 {item.track.name}
             </li>
@@ -157,7 +185,22 @@ export default class Spotify extends React.Component {
             <div className="spotify-page">
                 <div className="header container">
                     <div className="header-left display-3 boldest"> Playlist Analyzer </div>
-                    <div className="boldest"> {user.name}</div>
+                    <div className="row">
+                        <div className="col text-center m-1"> 
+                            <span className="badge badge-pink" > Dance </span>
+
+                        </div>
+                        <div className="col text-center m-1">
+                            <span className="badge badge-success " > Energy </span>
+                        
+                        </div>
+                        <div className="col text-center m-1">
+                            <span className="badge badge-info" > Tempo</span>
+                        
+                        </div>
+                    
+                    </div>
+                    <span className="boldest"> {user.name}</span>
                     <div className="boldest"> {user.followers} followers </div>
                     <span>
                         {userImageUrl ? <img className="user-image" src={user.images[0].url}></img> : ''}
@@ -179,7 +222,7 @@ export default class Spotify extends React.Component {
                     }
 
                     <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
-                        <h2>{currentPlayList ? currentPlayList.name : ''}</h2>
+                        <h2>{currentPlaylist ? currentPlaylist.name : ''}</h2>
                         <ul className="list-group">
                             {playListTracks}
                         </ul>
