@@ -1,7 +1,5 @@
 import React from 'react';
 
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-
 class Playlists extends React.Component {
   constructor(props) {
     super(props);
