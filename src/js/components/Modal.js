@@ -41,11 +41,14 @@ export default class Modal extends React.Component {
             overflow: 'hidden', 
             visibility: 'visible', 
             opacity: 1, 
-            transition: 'opacity .25s linear'
+            transition: 'opacity .25s linear',
+            WebkitTransition: 'opacity .25s linear'
+            
         } : {
             visibility: 'hidden', 
             opacity: 0 
         };
+
         
         const overlayStyle = this.props.overlayStyle ? this.props.overlayStyle : {};
         const contentStyle = this.props.contentStyle ? this.props.contentStyle : {};

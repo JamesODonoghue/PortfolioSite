@@ -7,6 +7,8 @@ import SpotifyWebApi from 'spotify-web-api-js';
 
 import Modal from '../components/Modal';
 import Playlists from '../components/Spotify/Playlists';
+import Error from '../components/Spotify/Error';
+
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
@@ -21,7 +23,8 @@ export default class Spotify extends React.Component {
             user: {},
             currentPlayList: null,
             playlists: null,
-            showModal: false
+            showModal: false,
+            error: null
         };
 
     }
@@ -29,6 +32,7 @@ export default class Spotify extends React.Component {
         this.parseAccessToken();
         this.getUserData();
         this.getPlaylists();
+        this.getMyTopTracks();
     }
 
     parseAccessToken() {
@@ -36,7 +40,14 @@ export default class Spotify extends React.Component {
         let parsed = queryString.parse(location.search);
         let accessToken = parsed.access_token;
 
-        spotifyApi.setAccessToken(accessToken);
+        return spotifyApi.setAccessToken(accessToken);
+
+    }
+
+    handleError = (error) => {
+        // let response = JSON.parse(error.response || error.responseText || );
+
+        this.setState({error: {status: error.status , message: error.statusText}});
 
     }
 
@@ -45,8 +56,19 @@ export default class Spotify extends React.Component {
         spotifyApi.getMe()
             .then(data => {
                 this.setState({user: { name: data.display_name, id: data.id, images: data.images, followers: data.followers.total}});
-            }, function(err) {
-                console.log('Something went wrong!', err);
+            }).catch(error => {
+                this.handleError(error);
+            });
+
+    }
+
+    getMyTopTracks() {
+
+        spotifyApi.getMyTopTracks()
+            .then(data => {
+                console.log(data);
+            }).catch(error => {
+                this.handleError(error);
             });
 
     }
@@ -54,13 +76,11 @@ export default class Spotify extends React.Component {
     getPlaylists() {
 
         spotifyApi.getUserPlaylists()
-        .then(data => {
-            // console.log(data);
-            this.setState({ playlists: this.mapPlaylists(data)});
-
-        }, function(err) {
-            console.log('Something went wrong!', err);
-        });
+            .then(data => {
+                this.setState({ playlists: this.mapPlaylists(data)});
+            }).catch(error => {
+                this.handleError(error);
+            });
 
     }
 
@@ -75,26 +95,6 @@ export default class Spotify extends React.Component {
         }))
     }
 
-    search(e) {
-
-        var query = this.state.filterString ? this.state.filterString : null;
-        var types = ['track', 'artist'];
-
-        if(query){
-            spotifyApi.search(query, types)
-            .then(data => {
-                // console.log(data);
-                this.setState({filteredList: {
-                    tracks: data.tracks ? data.tracks : null,
-                    artists: data.artists ? data.artists: null
-                }})
-            });
-
-        }
-
-
-    }
-
     getFeatures(playlist) {
 
         console.log(playlist);
@@ -102,13 +102,11 @@ export default class Spotify extends React.Component {
 
         playListTrackIds = _.map(playlist.items, 'track.id');
 
-        // console.log(playListTrackIds)
         spotifyApi.getAudioFeaturesForTracks(playListTrackIds)
             .then(data => {
-                console.log(data);
                 this.setState(...this.state, {audioFeatures: data.audio_features})
-
-                console.log(this.state);
+            }).catch(error => {
+                this.handleError(error);
             })
     }
 
@@ -138,7 +136,7 @@ export default class Spotify extends React.Component {
     }
     render() {
 
-        const {showModal, playlists, currentPlayList, user, audioFeatures} = this.state;
+        const {showModal, playlists, currentPlayList, user, audioFeatures, error} = this.state;
 
         const userImageUrl = user.images && user.images.length !== 0 ? user.images[0].url : null;
 
@@ -166,12 +164,13 @@ export default class Spotify extends React.Component {
                     </span>
                         
                 </div>
+
+                {error ? <Error error={error}/> :
      
                 <div className="container">
                     <div className="dashboard">
                         <div className="row">
                         </div>
-
                     </div>
 
                     {playlists && playlists.length !== 0 ? 
@@ -179,14 +178,14 @@ export default class Spotify extends React.Component {
                         playlists !== null ? emptyPlaylists : null
                     }
 
-                    <Modal onClose={this.handleModalClose} open={showModal}>
+                    <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
                         <h2>{currentPlayList ? currentPlayList.name : ''}</h2>
                         <ul className="list-group">
                             {playListTracks}
                         </ul>
                     
                     </Modal>
-                </div>
+                </div>}
                     
             </div>
 
