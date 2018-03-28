@@ -11,26 +11,21 @@ npm
 
 ```
 npm install
-
 ```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+First run npm install
 
 ```
-Give the example
+npm install
 ```
 
-And repeat
+Then after its finished building, run npm run dev
 
 ```
-until finished
+npm run dev
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
@@ -58,14 +53,11 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+ReactJS and Deployed on Heroku
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **James O'Donoghue** 
 
 
 ## License
