@@ -216,7 +216,7 @@ export default class Spotify extends React.Component {
 
         let userPlaylists = this.state.playlists ? this.state.playlists.map((playlist) => 
             <div key={playlist.id} onClick={(e) => this.handlePlaylistClick(playlist, e) } className="card spotify bold">
-                <img className="card-img-top" src={playlist.images ? playlist.images[0].url: '...'}></img>
+                <img className="card-img-top" src={playlist.images && playlist.images[0] ? playlist.images[0].url: '...'}></img>
                 <div className="card-body">
                     <h5 className="card-title boldest">
                         {playlist.name}
@@ -238,7 +238,7 @@ export default class Spotify extends React.Component {
                         <div className="boldest"> {user.name}</div>
                         <div className="boldest"> {user.followers} followers </div>
                         <span>
-                            <img className="user-image" src={user.images ? user.images[0].url : ''}></img>
+                            <img className="user-image" src={user.images && user.images[0] ? user.images[0].url : ''}></img>
                         </span>
                         
                     </div>
