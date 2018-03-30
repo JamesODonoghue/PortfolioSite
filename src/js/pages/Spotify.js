@@ -8,7 +8,7 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import Modal from '../components/Modal';
 import Playlists from '../components/Spotify/Playlists';
 import Error from '../components/Spotify/Error';
-
+import Header from '../components/Spotify/Header';
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
@@ -20,12 +20,13 @@ export default class Spotify extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: {},
+            user: null,
             currentPlaylist: null,
             playlists: null,
             showModal: false,
             error: null
         };
+
 
     }
     componentDidMount() {
@@ -45,8 +46,6 @@ export default class Spotify extends React.Component {
     }
 
     handleError = (error) => {
-        // let response = JSON.parse(error.response || error.responseText || );
-
         this.setState({error: {status: error.status , message: error.statusText}});
 
     }
@@ -115,6 +114,7 @@ export default class Spotify extends React.Component {
                     getTrackFeatures(playlists[key].tracks)
                 });
 
+
                 return Promise.all(promises);
 
                 
@@ -136,6 +136,7 @@ export default class Spotify extends React.Component {
                     playlists[key].tempoAverage = (playlists[key].tempoTotal / playlists[key].tracks.length);
                     
                 });
+
 
                 this.setState({playlists: playlists });
 
@@ -164,15 +165,38 @@ export default class Spotify extends React.Component {
     }
     render() {
 
-        const {showModal, playlists, currentPlaylist, user, audioFeatures, error} = this.state;
+        const {showModal, playlists, currentPlaylist, user, audioFeatures, error, progress} = this.state;
 
-        const userImageUrl = user.images && user.images.length !== 0 ? user.images[0].url : null;
 
-        let emptyPlaylists = (
-            <div style={{height: '100%', width: '100%'}} className="display-2 boldest">
-                You have no playlists you luddite.
-            </div>
-        );
+        const EmptyPlaylists = () => {
+            return (
+                <div style={{height: '100%', width: '100%'}} className="display-2 boldest">
+                    You have no playlists.
+                </div>
+            );
+        }
+
+        const Loading = () => {
+            return (
+                <div className="container display-2"> loading...</div>
+            )
+        }
+
+
+        const PlaylistsToRender = () => {
+            if(!playlists){
+                return <Loading/>
+            
+            } else if(playlists && playlists.length === 0){
+                return <EmptyPlaylists/>
+            } else {
+                return (
+                    <Playlists playlists={playlists} handleClick={this.handlePlaylistClick}/>
+                );
+            }
+        };
+
+
 
         let playListTracks = currentPlaylist ? currentPlaylist.tracks.map((item) => 
             <li key={item.track.id} className="list-group-item rounded-0">
@@ -183,53 +207,32 @@ export default class Spotify extends React.Component {
 
         return (
             <div className="spotify-page">
-                <div className="header container">
-                    <div className="header-left display-3 boldest"> Playlist Analyzer </div>
-                    <div className="row">
-                        <div className="col text-center m-1"> 
-                            <span className="badge badge-pink" > Dance </span>
-
-                        </div>
-                        <div className="col text-center m-1">
-                            <span className="badge badge-success " > Energy </span>
-                        
-                        </div>
-                        <div className="col text-center m-1">
-                            <span className="badge badge-info" > Tempo</span>
-                        
-                        </div>
+                {user && user.name ?  <Header user={user}/> : null }
+                {
+                    error ? 
                     
-                    </div>
-                    <span className="boldest"> {user.name}</span>
-                    <div className="boldest"> {user.followers} followers </div>
-                    <span>
-                        {userImageUrl ? <img className="user-image" src={user.images[0].url}></img> : ''}
-                    </span>
-                        
-                </div>
-
-                {error ? <Error error={error}/> :
+                    <Error error={error}/> 
+                    
+                    :
      
-                <div className="container">
-                    <div className="dashboard">
-                        <div className="row">
+                    <div className="container">
+                        <div className="dashboard">
+                            <div className="row">
+                            </div>
                         </div>
+
+                        <PlaylistsToRender/>
+
+                        <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
+                            <h2>{currentPlaylist ? currentPlaylist.name : ''}</h2>
+                            <ul className="list-group">
+                                {playListTracks}
+                            </ul>
+                        
+                        </Modal>
                     </div>
-
-                    {playlists && playlists.length !== 0 ? 
-                        <Playlists playlists={playlists} handleClick={this.handlePlaylistClick}/> :
-                        playlists !== null ? emptyPlaylists : null
-                    }
-
-                    <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
-                        <h2>{currentPlaylist ? currentPlaylist.name : ''}</h2>
-                        <ul className="list-group">
-                            {playListTracks}
-                        </ul>
-                    
-                    </Modal>
-                </div>}
-                    
+                }
+        
             </div>
 
         )
