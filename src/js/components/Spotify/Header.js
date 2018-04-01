@@ -14,7 +14,7 @@ export default class Header extends React.Component {
         
         return (
             <div className="header">
-                <div className="header-left display-3 boldest"> Playlist Analyzer </div>
+                <div className="header-left display-3"> Playlist Analyzer </div>
                 <div className="row">
                     <div className="col text-center m-1">
                         <span className="badge badge-pink" > Dance </span>

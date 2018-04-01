@@ -61,7 +61,8 @@ class AllTracks extends React.Component {
     
         return (
             <div>
-                <div className="display-4"> All Playlist Tracks </div>
+                <div className="display-4"> All of your Playlist Songs </div>
+                <span className="">  </span>
 
                 <ReactTable
                     data={data}
