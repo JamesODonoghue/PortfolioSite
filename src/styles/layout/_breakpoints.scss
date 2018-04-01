@@ -20,6 +20,10 @@
     .card.spotify {
       max-width: 20em;
       margin: 20px auto;
+      &:hover {
+        bottom: 10px;
+        cursor: pointer;
+    }
       
     }
 
@@ -35,5 +39,7 @@
       }
 
     }  
+
+    
   
   }
