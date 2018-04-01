@@ -11,7 +11,7 @@
     width: 100%;
     z-index: 1000;
     justify-content: center;
-    background-color: rgba(0, 0, 0, .65);
+    background-color: rgba(0, 0, 0, .8);
 }
 
 .modal-content-div {
@@ -30,7 +30,8 @@
 .modal-dialog-div {
     position: relative;
     padding: 2em;
-    background: #fff;
+    background: transparent;
     width: 100%;
+    fill:white;
     
 }

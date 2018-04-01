@@ -10,6 +10,8 @@ import Playlists from '../components/Spotify/Playlists';
 import Error from '../components/Spotify/Error';
 import Header from '../components/Spotify/Header';
 
+import AllTracks from '../components/Spotify/AllTracks';
+
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
   clientId : 'ceb9be711d7d46d8bdec35c613d38016'
@@ -99,6 +101,9 @@ export default class Spotify extends React.Component {
                 return getAllTracks(playlists);
                 
             }).then(data => {
+
+                let allTracks = [];
+
                 let promises = [];
 
                 let getAllTrackFeatures = (tracksArray) => {
@@ -114,13 +119,25 @@ export default class Spotify extends React.Component {
                     getTrackFeatures(playlists[key].tracks)
                 });
 
+                this.setState({allTracks: allTracks});
+
 
                 return Promise.all(promises);
 
                 
             }).then(data => {
+
+                let allTracks = [];
+                
                 data.forEach((val, key) => {
                     let sum = 0;
+
+                    playlists[key].tracks.forEach((track, key) => {
+                        track.audio_features = val.audio_features[key];
+                        allTracks.push(track);
+
+                    });
+
                     playlists[key].audio_features = val.audio_features;
                     playlists[key].danceTotal = val.audio_features.reduce((total, value) => {
                         return sum += value.danceability ;
@@ -138,7 +155,7 @@ export default class Spotify extends React.Component {
                 });
 
 
-                this.setState({playlists: playlists });
+                this.setState({playlists: playlists, allTracks: allTracks });
 
             });
     }
@@ -165,8 +182,9 @@ export default class Spotify extends React.Component {
     }
     render() {
 
-        const {showModal, playlists, currentPlaylist, user, audioFeatures, error, progress} = this.state;
+        const {showModal, playlists, currentPlaylist, user, audioFeatures, error, progress, allTracks} = this.state;
 
+        console.log(playlists);
 
         const EmptyPlaylists = () => {
             return (
@@ -209,20 +227,17 @@ export default class Spotify extends React.Component {
             <div className="spotify-page">
                 {user && user.name ?  <Header user={user}/> : null }
                 {
-                    error ? 
-                    
-                    <Error error={error}/> 
-                    
+                    error ? <Error error={error}/> 
                     :
-     
                     <div className="container">
                         <div className="dashboard">
                             <div className="row">
                             </div>
                         </div>
 
-                        <PlaylistsToRender/>
+                        { allTracks && allTracks.length > 0 ? <AllTracks tracks={allTracks}/> : []}
 
+                        <PlaylistsToRender/>
                         <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
                             <h2>{currentPlaylist ? currentPlaylist.name : ''}</h2>
                             <ul className="list-group">

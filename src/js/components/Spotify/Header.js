@@ -13,7 +13,7 @@ export default class Header extends React.Component {
         const userImageUrl = user.images && user.images.length !== 0 ? user.images[0].url : null;
         
         return (
-            <div className="header container">
+            <div className="header">
                 <div className="header-left display-3 boldest"> Playlist Analyzer </div>
                 <div className="row">
                     <div className="col text-center m-1">
