@@ -23,9 +23,6 @@ class AllTracks extends React.Component {
         
         const data = this.state.tracks;  
 
-        console.log(data);
-        
-        
         const columns = [{
             Header: fields.name,
             accessor: 'track.name'

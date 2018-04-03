@@ -67,7 +67,7 @@ export default class Spotify extends React.Component {
 
         spotifyApi.getMyTopTracks()
             .then(data => {
-                console.log(data);
+                // console.log(data);
             }).catch(error => {
                 this.handleError(error);
             });
@@ -90,7 +90,6 @@ export default class Spotify extends React.Component {
                 return data.items;
                 
             }).then(playlists => {
-                console.log(playlists);
                 let getAllTracks = (playlistArray) => {
                     return Promise.all(playlistArray.map(getPlaylistTracks));
                 }
@@ -183,8 +182,6 @@ export default class Spotify extends React.Component {
     render() {
 
         const {showModal, playlists, currentPlaylist, user, audioFeatures, error, progress, allTracks} = this.state;
-
-        console.log(playlists);
 
         const EmptyPlaylists = () => {
             return (

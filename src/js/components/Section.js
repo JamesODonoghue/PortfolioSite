@@ -69,7 +69,7 @@ export default class Section extends React.Component {
                         <h4><span className="badge badge-primary badge-pink">2014-Current</span></h4>
                     </div>
                 </div>
-                <div className="section row" id="sample-projects">
+                {/* <div className="section row" id="sample-projects">
                     <div className="section-title col-sm-3">
                         <h3>Sample Projects</h3>
                     
@@ -90,7 +90,7 @@ export default class Section extends React.Component {
                     </div>
                     </div>
                     <div className="section-content col-sm-3"></div>
-                </div>
+                </div> */}
                 <div className="section row" id="skills">
                     <div className="section-title col-sm-3">
                         <h3>Skills</h3>
