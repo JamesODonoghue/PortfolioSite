@@ -2,14 +2,6 @@
     @extend .container;
 }
 
-#app {
-    // background-color: $brand-secondary;
-}
-
-.section {
-    min-height: 600px;
-}
-
 .no-border {
     border: 0;
 }
@@ -17,9 +9,3 @@
 .resume {
     top: 250px;
 }
-
-.section {
-    min-height:300px;
-    padding-bottom: 150px;
-}
-  

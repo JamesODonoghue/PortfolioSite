@@ -16,7 +16,7 @@ export default class Parallax extends React.Component {
     
     handleScroll() {
         var scrollTop = window.pageYOffset;
-        
+
         var topPos = -scrollTop *.2 + 'px';
         var styleObj = {
             top: topPos

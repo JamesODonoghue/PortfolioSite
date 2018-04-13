@@ -6,122 +6,56 @@ export default class Section extends React.Component {
     constructor(props){
 
         super(props);
-
-        this.state = {
-            skills: [
-                { key: 'html5', name: 'HTML5', value: '100%'},
-                { key: 'javascript', name: 'JavaScript', value: '90%'},
-                { key: 'css', name: 'CSS', value: '80%'},
-                { key: 'knockout', name: 'Knockout', value: '80%'},
-                { key: 'jquery', name: 'JQuery', value: '70%'}
-                
-            ]
-        }
     }
 
     render() {
 
-        let skills = this.state.skills.map((skill) => {
-
-            let barStyle = {
-                width: skill.value
-            };
-            return (
-                <div className="skill" key={skill.key} id={skill.key}>
-                    <h4>{skill.name}</h4>
-                    <div className="progress">
-                        <div className="progress-bar bg-primary" role="progressbar" style={barStyle} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                            <div className="progress-animated"></div>
+        return (
+            <div>
+                <div className="section">
+                    <div className="row text-center">
+                        <div className="col">
+                            <div className="display-1">
+                                <div>Hello</div> 
+                                <div>I'm James</div>
+                            </div>
+                            <h3>
+                                I like to write software.
+                            </h3>
+                            <button className="button-resume" onClick={()=> window.location.href = '/assets/james.pdf'}>
+                                Download Resume
+                            </button>
                         </div>
+
+
+                    
+                    </div>
+                    <br></br>
+                    <div className="row justify-content-center">
+                        <div className="icon icon-github" onClick={() => {window.location.href='https://github.com/JamesODonoghue'}}></div>
+                        <div className="icon icon-linkedin" onClick={() => {window.location.href='http://www.linkedin.com/in/JamesODonoghue-92327555'}}></div>
                         
                     </div>
                 </div>
-            );
-        });
-
-        return (
-            <div>
-                <div className="section row" id="experience">
-                    <div className="section-title col-sm-3">
-                        <h3>Experience</h3>
-                    
-                    </div>
-                    <div className="section-content col-sm-6">
-                        <h4> Software Engineer</h4>
-                        <p> Advent Software </p>
-                        <p>
-                            Use Agile Scrum to track tasks, create stories, deliver business features. 
-                        </p>
-                        <p>
-                            Create generic, reusable UI components that communicated through pubsub. 
-                        </p>
-                        <p>
-                            Write UI tests using NightwatchJS, as well as unit tests for generic components using Jasmine.  
-                        </p>
-                        <p>
-                            Collaborate with the UX team to deliver a clean styled front end for our application powered by
-                        </p>
-                        <p>
-                            Format and automate Jenkins logs using Splunk (allowed for robust queries on info/errors/warnings).  
-                        </p>
-                    </div>
-                    <div className="section-content col-sm-3">
-                        <h4><span className="badge badge-primary badge-pink">2014-Current</span></h4>
-                    </div>
-                </div>
-                {/* <div className="section row" id="sample-projects">
-                    <div className="section-title col-sm-3">
-                        <h3>Sample Projects</h3>
-                    
-                    </div>
-                    <div className="section-content col-sm-6">
-                    <div className="card no-border">
-                        <div className="card-title">
-                            <h4>Custom React App that uses the Spotify API</h4>
-                        </div>
-                        <button className="btn btn-spotify" onClick={() => window.location.href='/login'} > Log in to Spotify</button>
-
-                        <div className="card-body">
-                            <div className="card-title bold"> Sample Spotify Credentials</div>
-                            <div className="card-text "> Email: spotifyreact@gmail.com</div>
-                            <div className="card-text"> Password: Example</div>
-                            
+                {/* <div className="section">
+                    <div className="row">
+                        <div className="col">
+                            <div className="display-1">
+                                Here are some projects  
+                            </div>
                         </div>
                     </div>
+                    <div className="row">
+                        <div className="col">
+                            <h3>
+                                Spotify Client that analyzes playlists.
+                            </h3>
+                            <button className="button-spotify">
+                                Login
+                            </button>
+                        </div>
                     </div>
-                    <div className="section-content col-sm-3"></div>
                 </div> */}
-                <div className="section row" id="skills">
-                    <div className="section-title col-sm-3">
-                        <h3>Skills</h3>
-                    
-                    </div>
-                    <div className="section-content col-sm-6">
-                        {skills}
-                    </div>
-                    <div className="section-content col-sm-3"></div>
-                </div>
-                <div className="section row" id="education">
-                    <div className="section-title col-sm-3">
-                        <h3> Education </h3>
-                    </div>
-                    <div className="section-content col-sm-6">
-                        <h4> Computer Science, Bachelor of Science</h4>
-                        <p> Seattle University </p>
-                    </div>
-                    <div className="section-content col-sm-3">
-                        <h4><span className="badge badge-primary badge-pink">2010-2014</span></h4>
-                    </div>
-                </div>
-                <div className="section row" id="contact">
-                    <div className="section-title col-sm-3">
-                        <h3>Contact</h3>
-                    </div>
-                    <div className="section-content col-sm-6">
-                        <h4>jodonogh1@gmail.com</h4>
-                    </div>
-                    <div className="section-content col-sm-3"></div>
-                </div>
             </div>
         );
     }

@@ -20,13 +20,13 @@ export default class Header extends React.Component {
             });
         });
 
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > stickyNav ) {
-              $('.navbar').addClass('fixed-top');
-            } else{
-              $('.navbar').removeClass('fixed-top');
-            }
-          });
+        // $(window).scroll(function () {
+        //     if ($(window).scrollTop() > stickyNav ) {
+        //       $('.navbar').addClass('fixed-top');
+        //     } else{
+        //       $('.navbar').removeClass('fixed-top');
+        //     }
+        //   });
         
     }
     render() {
@@ -35,25 +35,18 @@ export default class Header extends React.Component {
   
             <div>
 
-                <nav className="navbar navbar-expand-lg navbar-light justify-content-center fixed">
+                <nav className="navbar navbar-expand-lg navbar-light">
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar.-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarContent">
-                        <ul className="nav nav-pills">
+                        <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link active" data-toggle="pill" href="#experience"> Experience </a>
+                                <a className="nav-link active" href="#experience"> About </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" data-toggle="pill" href="#skills"> Skills </a>
+                            <a className="nav-link" href="#skills"> Skills </a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" data-toggle="pill" href="#education"> Education </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" data-toggle="pill" href="#contact"> Contact </a>
-                            </li>
-
                         </ul>
                     </div>
 

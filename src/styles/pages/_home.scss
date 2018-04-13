@@ -2,30 +2,11 @@
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
 
-.site-header {
-    text-align: center;   
-    margin-bottom: 0;
-    // position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 9999;
-
-    .jumbotron {
-        margin-bottom: 0;
-        background: #000;
-        color: #fff;
-        border-radius: 0;
-    }
-
-    
+.section {
+    height: 100vh;
+    position: relative;
+    padding-top: 20%;
 }
-
-.resume {
-    top:610px;
-    z-index: -2;
-
-}
-
 .section-title {
     font-size: 1em;
 }
@@ -54,16 +35,8 @@ a {
 
 }
 
+.display-1 {
+    font-weight: 900;
+}
 
 
-
-  
-//   @media(min-width: 940px){
-//     .site-title {
-//         font-size: 3em;
-//     }
-  
-//     .resume {
-//         top: 500px;
-//     }
-//   }

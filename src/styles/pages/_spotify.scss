@@ -46,15 +46,6 @@
 }
 
 
-
-
-.spotify-banner {
-    @extend .container;
-    @extend .jumbotron;
-}
-
-
-
 .list-group-item {
     border: 0;
     border-bottom: 1px solid $mid-grey;
@@ -70,19 +61,7 @@
     margin-top: 10px;
 }
 
-.my-button {
-    border: 2px solid #fff;
-    border-radius: 0;
-    background: none;
-    color: #fff;
-    transition: all .3s;
-    padding: 2em;
 
-    &:hover{
-        background: #fff;
-        color: #2ecc71;
-    }
-}
 
 .error-page {
     background: #fff;

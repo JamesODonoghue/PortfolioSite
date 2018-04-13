@@ -3,15 +3,60 @@
 // -----------------------------------------------------------------------------
 
 
-.btn-spotify {
-    background-color: #fff;
-    color: $spotify-green;
-    border-color: $spotify-green;
-    padding: 1.5em;
+@mixin my-button-hover($background-color) {
+    opacity: 1;
+    background-color: $background-color;
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+    transition-timing-function: ease-in-out;
 
-    &:hover {
-        color: #fff;
-        background-color: $spotify-green;
+}
+
+@mixin my-button($button-color) {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid black;
+    z-index: 1;
+    background: none;
+    overflow:hidden;
+    position: relative;
+    transition: color .3s, border-color .3s;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+        transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+        -webkit-transform-origin: 0% 100%;
+        transform-origin: 0% 100%;
+        -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s ease-in-out;
+        transition: transform 0.3, opacity 0.3s, background-color 0.3s;
 
     }
+
+    &:hover {
+        color: white;
+        border-color: $button-color;
+        cursor: pointer;
+
+        &::before {
+            @include my-button-hover($button-color);
+
+        }        
+    }
+}
+
+
+
+.button-spotify {
+    @include my-button($spotify-green)
+}
+
+.button-resume {
+    @include my-button($brand-blue)
 }

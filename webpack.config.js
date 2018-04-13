@@ -52,6 +52,9 @@ module.exports = {
         proxy: {
             '/login': {
                 target: process.env.BACKEND_URI || 'http://localhost:8080'
+            },
+            '/assets': {
+                target: process.env.BACKEND_URI || 'http://localhost:8080'
             }
         }
     },
