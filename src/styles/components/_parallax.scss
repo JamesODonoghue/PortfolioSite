@@ -5,16 +5,13 @@
     left: 0;
     background-size: 100%;   
     background-repeat: no-repeat;
-         
-    &.photo {
-        background-image: url('/images/Nagata-9463.png');
-        margin: 0;
-        top:0;
+}
 
-    }
 
-    &.logo {
-        background-image: url('/images/nagata-dance-logo_stacked.png');
+.main-header {
+    background: $brand-pink;
+    transform: skewY(30deg);
+    height: 400px;
+    top: 500px;
 
-    }
 }

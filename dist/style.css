@@ -1,4 +1,411 @@
-@import url(https://fonts.googleapis.com/css?family=Quicksand);@import url(https://fonts.googleapis.com/css?family=Shrikhand);@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);@import url(https://fonts.googleapis.com/css?family=Raleway:200,400,500,800);/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+@import url(https://fonts.googleapis.com/css?family=Quicksand);@import url(https://fonts.googleapis.com/css?family=Shrikhand);@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);@import url(https://fonts.googleapis.com/css?family=Raleway:200,400,500,800);@import url(https://sp-bootstrap.global.ssl.fastly.net/8.0.0/fonts/circular-book.woff2);.ReactTable {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1); }
+
+.ReactTable * {
+  box-sizing: border-box; }
+
+.ReactTable .rt-table {
+  -webkit-box-flex: 1;
+  -ms-flex: auto 1;
+  flex: auto 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  border-collapse: collapse;
+  overflow: auto; }
+
+.ReactTable .rt-thead {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.ReactTable .rt-thead.-headerGroups {
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+.ReactTable .rt-thead.-filters {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+.ReactTable .rt-thead.-filters input, .ReactTable .rt-thead.-filters select {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 5px 7px;
+  font-size: inherit;
+  border-radius: 3px;
+  font-weight: normal;
+  outline: none; }
+
+.ReactTable .rt-thead.-filters .rt-th {
+  border-right: 1px solid rgba(0, 0, 0, 0.02); }
+
+.ReactTable .rt-thead.-header {
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.15); }
+
+.ReactTable .rt-thead .rt-tr {
+  text-align: center; }
+
+.ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td {
+  padding: 5px 5px;
+  line-height: normal;
+  position: relative;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: inset 0 0 0 0 transparent; }
+
+.ReactTable .rt-thead .rt-th.-sort-asc, .ReactTable .rt-thead .rt-td.-sort-asc {
+  box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 0.6); }
+
+.ReactTable .rt-thead .rt-th.-sort-desc, .ReactTable .rt-thead .rt-td.-sort-desc {
+  box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.6); }
+
+.ReactTable .rt-thead .rt-th.-cursor-pointer, .ReactTable .rt-thead .rt-td.-cursor-pointer {
+  cursor: pointer; }
+
+.ReactTable .rt-thead .rt-th:last-child, .ReactTable .rt-thead .rt-td:last-child {
+  border-right: 0; }
+
+.ReactTable .rt-thead .rt-resizable-header {
+  overflow: visible; }
+
+.ReactTable .rt-thead .rt-resizable-header:last-child {
+  overflow: hidden; }
+
+.ReactTable .rt-thead .rt-resizable-header-content {
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.ReactTable .rt-thead .rt-header-pivot {
+  border-right-color: #f7f7f7; }
+
+.ReactTable .rt-thead .rt-header-pivot:after, .ReactTable .rt-thead .rt-header-pivot:before {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none; }
+
+.ReactTable .rt-thead .rt-header-pivot:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: #fff;
+  border-width: 8px;
+  margin-top: -8px; }
+
+.ReactTable .rt-thead .rt-header-pivot:before {
+  border-color: rgba(102, 102, 102, 0);
+  border-left-color: #f7f7f7;
+  border-width: 10px;
+  margin-top: -10px; }
+
+.ReactTable .rt-tbody {
+  -webkit-box-flex: 99999;
+  -ms-flex: 99999 1 auto;
+  flex: 99999 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow: auto; }
+
+.ReactTable .rt-tbody .rt-tr-group {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.05); }
+
+.ReactTable .rt-tbody .rt-tr-group:last-child {
+  border-bottom: 0; }
+
+.ReactTable .rt-tbody .rt-td {
+  border-right: 1px solid rgba(0, 0, 0, 0.02); }
+
+.ReactTable .rt-tbody .rt-td:last-child {
+  border-right: 0; }
+
+.ReactTable .rt-tbody .rt-expandable {
+  cursor: pointer; }
+
+.ReactTable .rt-tr-group {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch; }
+
+.ReactTable .rt-tr {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex; }
+
+.ReactTable .rt-th, .ReactTable .rt-td {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 0px;
+  flex: 1 0 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 7px 5px;
+  overflow: hidden;
+  transition: .3s ease;
+  transition-property: width,min-width,padding,opacity; }
+
+.ReactTable .rt-th.-hidden, .ReactTable .rt-td.-hidden {
+  width: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important; }
+
+.ReactTable .rt-expander {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  color: transparent;
+  margin: 0 10px; }
+
+.ReactTable .rt-expander:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+  transform: translate(-50%, -50%) rotate(-90deg);
+  border-left: 5.04px solid transparent;
+  border-right: 5.04px solid transparent;
+  border-top: 7px solid rgba(0, 0, 0, 0.8);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer; }
+
+.ReactTable .rt-expander.-open:after {
+  -webkit-transform: translate(-50%, -50%) rotate(0);
+  transform: translate(-50%, -50%) rotate(0); }
+
+.ReactTable .rt-resizer {
+  display: inline-block;
+  position: absolute;
+  width: 36px;
+  top: 0;
+  bottom: 0;
+  right: -18px;
+  cursor: col-resize;
+  z-index: 10; }
+
+.ReactTable .rt-tfoot {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15); }
+
+.ReactTable .rt-tfoot .rt-td {
+  border-right: 1px solid rgba(0, 0, 0, 0.05); }
+
+.ReactTable .rt-tfoot .rt-td:last-child {
+  border-right: 0; }
+
+.ReactTable.-striped .rt-tr.-odd {
+  background: rgba(0, 0, 0, 0.03); }
+
+.ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
+  background: rgba(0, 0, 0, 0.05); }
+
+.ReactTable .-pagination {
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 3px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+  border-top: 2px solid rgba(0, 0, 0, 0.1); }
+
+.ReactTable .-pagination input, .ReactTable .-pagination select {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 5px 7px;
+  font-size: inherit;
+  border-radius: 3px;
+  font-weight: normal;
+  outline: none; }
+
+.ReactTable .-pagination .-btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 3px;
+  padding: 6px;
+  font-size: 1em;
+  color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.1);
+  transition: all .1s ease;
+  cursor: pointer;
+  outline: none; }
+
+.ReactTable .-pagination .-btn[disabled] {
+  opacity: .5;
+  cursor: default; }
+
+.ReactTable .-pagination .-btn:not([disabled]):hover {
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff; }
+
+.ReactTable .-pagination .-previous, .ReactTable .-pagination .-next {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center; }
+
+.ReactTable .-pagination .-center {
+  -webkit-box-flex: 1.5;
+  -ms-flex: 1.5;
+  flex: 1.5;
+  text-align: center;
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
+
+.ReactTable .-pagination .-pageInfo {
+  display: inline-block;
+  margin: 3px 10px;
+  white-space: nowrap; }
+
+.ReactTable .-pagination .-pageJump {
+  display: inline-block; }
+
+.ReactTable .-pagination .-pageJump input {
+  width: 70px;
+  text-align: center; }
+
+.ReactTable .-pagination .-pageSizeOptions {
+  margin: 3px 10px; }
+
+.ReactTable .rt-noData {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.8);
+  transition: all .3s ease;
+  z-index: 1;
+  pointer-events: none;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.5); }
+
+.ReactTable .-loading {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all .3s ease;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none; }
+
+.ReactTable .-loading > div {
+  position: absolute;
+  display: block;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+  -webkit-transform: translateY(-52%);
+  transform: translateY(-52%);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+.ReactTable .-loading.-active {
+  opacity: 1;
+  z-index: 2;
+  pointer-events: all; }
+
+.ReactTable .-loading.-active > div {
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%); }
+
+.ReactTable .rt-resizing .rt-th, .ReactTable .rt-resizing .rt-td {
+  transition: none !important;
+  cursor: col-resize;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
  * 2. Correct the line height in all browsers.
@@ -434,15 +841,13 @@ a {
     text-decoration: underline; }
 
 html, body, h1, h3 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Helvetica', 'Open Sans', sans-serif;
   font-weight: 100;
   webkit-font-smoothing: antialiased; }
 
-@media (min-width: 768px) {
-  h1 {
-    font-size: 4em; }
-  h6 {
-    font-size: 1.5em; } }
+@font-face {
+  font-family: 'Futura';
+  src: url("/fonts/league-spartan-master/webfonts/leaguespartan-bold.woff") format("woff"); }
 
 /**
  * Basic typography style for copy text
@@ -465,6 +870,23 @@ html, body, h1, h3 {
 h1 {
   margin: 0; }
 
+.icon {
+  background-size: 50px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  margin: 10px; }
+
+.icon-github {
+  background-image: url('data:image/svg+xml;utf8,<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve" viewBox="0 0 438.549 438.549" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#000" d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63c0,47.78,13.94,90.745,41.827,128.906c27.884,38.164,63.906,64.572,108.063,79.227c5.14,0.954,8.945,0.283,11.419-1.996c2.475-2.282,3.711-5.14,3.711-8.562c0-0.571-0.049-5.708-0.144-15.417c-0.098-9.709-0.144-18.179-0.144-25.406l-6.567,1.136c-4.187,0.767-9.469,1.092-15.846,1c-6.374-0.089-12.991-0.757-19.842-1.999c-6.854-1.231-13.229-4.086-19.13-8.559c-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559c-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-0.951-2.568-2.098-3.711-3.429c-1.142-1.331-1.997-2.663-2.568-3.997c-0.572-1.335-0.098-2.43,1.427-3.289c1.525-0.859,4.281-1.276,8.28-1.276l5.708,0.853c3.807,0.763,8.516,3.042,14.133,6.851c5.614,3.806,10.229,8.754,13.846,14.842c4.38,7.806,9.657,13.754,15.846,17.847c6.184,4.093,12.419,6.136,18.699,6.136c6.28,0,11.704-0.476,16.274-1.423c4.565-0.952,8.848-2.383,12.847-4.285c1.713-12.758,6.377-22.559,13.988-29.41c-10.848-1.14-20.601-2.857-29.264-5.14c-8.658-2.286-17.605-5.996-26.835-11.14c-9.235-5.137-16.896-11.516-22.985-19.126c-6.09-7.614-11.088-17.61-14.987-29.979c-3.901-12.374-5.852-26.648-5.852-42.826c0-23.035,7.52-42.637,22.557-58.817c-7.044-17.318-6.379-36.732,1.997-58.24c5.52-1.715,13.706-0.428,24.554,3.853c10.85,4.283,18.794,7.952,23.84,10.994c5.046,3.041,9.089,5.618,12.135,7.708c17.705-4.947,35.976-7.421,54.818-7.421s37.117,2.474,54.823,7.421l10.849-6.849c7.419-4.57,16.18-8.758,26.262-12.565c10.088-3.805,17.802-4.853,23.134-3.138c8.562,21.509,9.325,40.922,2.279,58.24c15.036,16.18,22.559,35.787,22.559,58.817c0,16.178-1.958,30.497-5.853,42.966c-3.9,12.471-8.941,22.457-15.125,29.979c-6.191,7.521-13.901,13.85-23.131,18.986c-9.232,5.14-18.182,8.85-26.84,11.136c-8.662,2.286-18.415,4.004-29.263,5.146c9.894,8.562,14.842,22.077,14.842,40.539v60.237c0,3.422,1.19,6.279,3.572,8.562c2.379,2.279,6.136,2.95,11.276,1.995c44.163-14.653,80.185-41.062,108.068-79.226c27.88-38.161,41.825-81.126,41.825-128.906C438.536,184.851,428.728,148.168,409.132,114.573z"/></svg>'); }
+  .icon-github:hover {
+    background-image: url('data:image/svg+xml;utf8,<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve" viewBox="0 0 438.549 438.549" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#2196F3" d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63c0,47.78,13.94,90.745,41.827,128.906c27.884,38.164,63.906,64.572,108.063,79.227c5.14,0.954,8.945,0.283,11.419-1.996c2.475-2.282,3.711-5.14,3.711-8.562c0-0.571-0.049-5.708-0.144-15.417c-0.098-9.709-0.144-18.179-0.144-25.406l-6.567,1.136c-4.187,0.767-9.469,1.092-15.846,1c-6.374-0.089-12.991-0.757-19.842-1.999c-6.854-1.231-13.229-4.086-19.13-8.559c-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559c-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-0.951-2.568-2.098-3.711-3.429c-1.142-1.331-1.997-2.663-2.568-3.997c-0.572-1.335-0.098-2.43,1.427-3.289c1.525-0.859,4.281-1.276,8.28-1.276l5.708,0.853c3.807,0.763,8.516,3.042,14.133,6.851c5.614,3.806,10.229,8.754,13.846,14.842c4.38,7.806,9.657,13.754,15.846,17.847c6.184,4.093,12.419,6.136,18.699,6.136c6.28,0,11.704-0.476,16.274-1.423c4.565-0.952,8.848-2.383,12.847-4.285c1.713-12.758,6.377-22.559,13.988-29.41c-10.848-1.14-20.601-2.857-29.264-5.14c-8.658-2.286-17.605-5.996-26.835-11.14c-9.235-5.137-16.896-11.516-22.985-19.126c-6.09-7.614-11.088-17.61-14.987-29.979c-3.901-12.374-5.852-26.648-5.852-42.826c0-23.035,7.52-42.637,22.557-58.817c-7.044-17.318-6.379-36.732,1.997-58.24c5.52-1.715,13.706-0.428,24.554,3.853c10.85,4.283,18.794,7.952,23.84,10.994c5.046,3.041,9.089,5.618,12.135,7.708c17.705-4.947,35.976-7.421,54.818-7.421s37.117,2.474,54.823,7.421l10.849-6.849c7.419-4.57,16.18-8.758,26.262-12.565c10.088-3.805,17.802-4.853,23.134-3.138c8.562,21.509,9.325,40.922,2.279,58.24c15.036,16.18,22.559,35.787,22.559,58.817c0,16.178-1.958,30.497-5.853,42.966c-3.9,12.471-8.941,22.457-15.125,29.979c-6.191,7.521-13.901,13.85-23.131,18.986c-9.232,5.14-18.182,8.85-26.84,11.136c-8.662,2.286-18.415,4.004-29.263,5.146c9.894,8.562,14.842,22.077,14.842,40.539v60.237c0,3.422,1.19,6.279,3.572,8.562c2.379,2.279,6.136,2.95,11.276,1.995c44.163-14.653,80.185-41.062,108.068-79.226c27.88-38.161,41.825-81.126,41.825-128.906C438.536,184.851,428.728,148.168,409.132,114.573z"/></svg>'); }
+
+.icon-linkedin {
+  background-image: url('data:image/svg+xml;utf8,<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve" viewBox="0 0 438.549 438.549" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#000" id="LinkedIn__x28_alt_x29_" d="M398.355,0H31.782C14.229,0,0.002,13.793,0.002,30.817v368.471c0,17.025,14.232,30.83,31.78,30.83h366.573c17.549,0,31.76-13.814,31.76-30.83V30.817C430.115,13.798,415.904,0,398.355,0zM130.4,360.038H65.413V165.845H130.4V360.038z M97.913,139.315h-0.437c-21.793,0-35.92-14.904-35.92-33.563c0-19.035,14.542-33.535,36.767-33.535c22.227,0,35.899,14.496,36.331,33.535C134.654,124.415,120.555,139.315,97.913,139.315zM364.659,360.038h-64.966V256.138c0-26.107-9.413-43.921-32.907-43.921c-17.973,0-28.642,12.018-33.327,23.621c-1.736,4.144-2.166,9.94-2.166,15.728v108.468h-64.954c0,0,0.85-175.979,0-194.192h64.964v27.531c8.624-13.229,24.035-32.1,58.534-32.1c42.76,0,74.822,27.739,74.822,87.414V360.038z M230.883,193.99c0.111-0.182,0.266-0.401,0.42-0.614v0.614H230.883z"/></svg>'); }
+  .icon-linkedin:hover {
+    background-image: url('data:image/svg+xml;utf8,<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve" viewBox="0 0 438.549 438.549" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#2196F3" id="LinkedIn__x28_alt_x29_" d="M398.355,0H31.782C14.229,0,0.002,13.793,0.002,30.817v368.471c0,17.025,14.232,30.83,31.78,30.83h366.573c17.549,0,31.76-13.814,31.76-30.83V30.817C430.115,13.798,415.904,0,398.355,0zM130.4,360.038H65.413V165.845H130.4V360.038z M97.913,139.315h-0.437c-21.793,0-35.92-14.904-35.92-33.563c0-19.035,14.542-33.535,36.767-33.535c22.227,0,35.899,14.496,36.331,33.535C134.654,124.415,120.555,139.315,97.913,139.315zM364.659,360.038h-64.966V256.138c0-26.107-9.413-43.921-32.907-43.921c-17.973,0-28.642,12.018-33.327,23.621c-1.736,4.144-2.166,9.94-2.166,15.728v108.468h-64.954c0,0,0.85-175.979,0-194.192h64.964v27.531c8.624-13.229,24.035-32.1,58.534-32.1c42.76,0,74.822,27.739,74.822,87.414V360.038z M230.883,193.99c0.111-0.182,0.266-0.401,0.42-0.614v0.614H230.883z"/></svg>'); }
+
 /**
  * Clear inner floats
  */
@@ -479,20 +901,6 @@ h1 {
  * 2. Center it in the viewport
  * 3. Leave some space on the edges, especially valuable on small screens
  */
-.container, .my-container, .spotify-banner {
-  max-width: 1180px;
-  /* 1 */
-  margin-left: auto;
-  /* 2 */
-  margin-right: auto;
-  /* 2 */
-  padding-left: 20px;
-  /* 3 */
-  padding-right: 20px;
-  /* 3 */
-  width: 100%;
-  /* 1 */ }
-
 /**
  * Hide text while making it readable for screen readers
  * 1. Needed in WebKit-based browsers because of an implementation bug;
@@ -526,30 +934,111 @@ h1 {
 .site-subtitle {
   font-size: 1em; }
 
-.section {
-  min-height: 600px; }
-
 .no-border {
   border: 0; }
 
 .resume {
   top: 250px; }
 
-.section {
-  min-height: 300px;
-  padding-bottom: 150px; }
+.button-spotify {
+  width: 100%;
+  padding: 1em;
+  border: 1px solid black;
+  z-index: 1;
+  background: none;
+  overflow: hidden;
+  position: relative;
+  transition: color .3s, border-color .3s; }
+  .button-spotify::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s ease-in-out;
+    transition: transform 0.3, opacity 0.3s, background-color 0.3s; }
+  .button-spotify:hover {
+    color: white;
+    border-color: #1db954;
+    cursor: pointer; }
+    .button-spotify:hover::before {
+      opacity: 1;
+      background-color: #1db954;
+      -webkit-transform: rotate3d(0, 0, 1, 0deg);
+      transform: rotate3d(0, 0, 1, 0deg);
+      transition-timing-function: ease-in-out; }
 
-.btn-spotify {
-  background-color: #fff;
-  color: #1db954;
-  border-color: #1db954;
-  padding: 1.5em; }
-  .btn-spotify:hover {
-    color: #fff;
-    background-color: #1db954; }
+.button-resume {
+  width: 100%;
+  padding: 1em;
+  border: 1px solid black;
+  z-index: 1;
+  background: none;
+  overflow: hidden;
+  position: relative;
+  transition: color .3s, border-color .3s; }
+  .button-resume::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s ease-in-out;
+    transition: transform 0.3, opacity 0.3s, background-color 0.3s; }
+  .button-resume:hover {
+    color: white;
+    border-color: #2196F3;
+    cursor: pointer; }
+    .button-resume:hover::before {
+      opacity: 1;
+      background-color: #2196F3;
+      -webkit-transform: rotate3d(0, 0, 1, 0deg);
+      transform: rotate3d(0, 0, 1, 0deg);
+      transition-timing-function: ease-in-out; }
 
-.my-modal {
-  padding: 0; }
+.modal-overlay-div {
+  position: fixed;
+  display: flex;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8); }
+
+.modal-content-div {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  z-index: 10000;
+  overflow: auto;
+  justify-content: center;
+  cursor: pointer; }
+
+.modal-dialog-div {
+  position: relative;
+  padding: 2em;
+  background: transparent;
+  width: 100%;
+  fill: white; }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #E91E63;
@@ -576,6 +1065,15 @@ h1 {
 .skill:hover .progress-animated {
   width: 100%; }
 
+.ReactTable .rt-thead .rt-th.-sort-desc, .ReactTable .rt-thead .rt-td.-sort-desc {
+  box-shadow: inset 0 -3px 0 0 #fff; }
+
+.ReactTable .rt-thead .rt-th.-sort-desc, .ReactTable .rt-thead .rt-td.-sort-desc {
+  box-shadow: inset 0 -3px 0 0 #fff; }
+
+.ReactTable .rt-thead .rt-th.-sort-asc, .ReactTable .rt-thead .rt-td.-sort-asc {
+  box-shadow: inset 0 3px 0 0 #fff; }
+
 .parallax-window {
   position: fixed;
   height: 100%;
@@ -583,12 +1081,12 @@ h1 {
   left: 0;
   background-size: 100%;
   background-repeat: no-repeat; }
-  .parallax-window.photo {
-    background-image: url("/images/Nagata-9463.png");
-    margin: 0;
-    top: 0; }
-  .parallax-window.logo {
-    background-image: url("/images/nagata-dance-logo_stacked.png"); }
+
+.main-header {
+  background: #E91E63;
+  transform: skewY(30deg);
+  height: 400px;
+  top: 500px; }
 
 .health-page {
   max-width: 500px;
@@ -599,21 +1097,10 @@ h1 {
 .health-data {
   overflow: auto; }
 
-.site-header {
-  text-align: center;
-  margin-bottom: 0;
-  width: 100%;
-  top: 0;
-  z-index: 9999; }
-  .site-header .jumbotron, .site-header .spotify-banner {
-    margin-bottom: 0;
-    background: #000;
-    color: #fff;
-    border-radius: 0; }
-
-.resume {
-  top: 610px;
-  z-index: -2; }
+.section {
+  height: 100vh;
+  position: relative;
+  padding-top: 20%; }
 
 .section-title {
   font-size: 1em; }
@@ -632,11 +1119,32 @@ a {
   color: #E91E63; }
 
 .badge-pink {
-  background-color: #E91E63; }
+  background-color: #E91E63;
+  color: white; }
+
+.display-1 {
+  font-weight: 900; }
 
 .spotify-page {
-  background-color: #f4f7f6;
-  font-family: "Helvetica"; }
+  background: #2b5876;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4e4376, #2b5876);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4e4376, #2b5876);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white; }
+  .spotify-page .list-group {
+    overflow: auto;
+    max-height: 90%; }
+  .spotify-page .header {
+    padding: 1em; }
+  .spotify-page .badge {
+    font-size: 100%;
+    padding: .75em;
+    width: 100%;
+    max-width: 10em; }
+  .spotify-page .container {
+    max-width: 1600px; }
 
 .card.spotify {
   border: 0;
@@ -645,12 +1153,49 @@ a {
   bottom: 0;
   transition: all .25s ease;
   padding: 0;
-  max-width: 25em; }
+  width: 100%;
+  color: #000; }
   .card.spotify .card-img-top {
     border-radius: 0; }
-  .card.spotify:hover {
-    bottom: 10px;
-    cursor: pointer; }
 
-.my-container {
-  max-width: 1500px; }
+.list-group-item {
+  border: 0;
+  border-bottom: 1px solid #999999;
+  margin: 0;
+  padding: .5em;
+  background: transparent; }
+
+.user-image {
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: 10px; }
+
+.error-page {
+  background: #fff; }
+
+.badge-dance {
+  color: white; }
+
+.number {
+  text-align: right; }
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4em; }
+  h6 {
+    font-size: 1.5em; }
+  .modal-content-div {
+    align-items: center; }
+  .modal-dialog-div {
+    width: 50%; }
+  .card.spotify {
+    max-width: 20em;
+    margin: 20px auto; }
+    .card.spotify:hover {
+      bottom: 10px;
+      cursor: pointer; }
+  .spotify-page .list-group {
+    max-height: 600px; }
+  .spotify-page .header .col {
+    flex-grow: 0; } }
