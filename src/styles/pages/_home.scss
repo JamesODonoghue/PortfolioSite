@@ -5,7 +5,7 @@
 .section {
     height: 100vh;
     position: relative;
-    padding-top: 20%;
+    padding-top: 200px;
 }
 .section-title {
     font-size: 1em;
@@ -40,3 +40,21 @@ a {
 }
 
 
+.background {
+    height:100%;
+    width: 100%;
+    position: absolute;
+    background: $brand-blue;
+    transform: skew(50deg, 0deg);
+}
+
+// .background-2 {
+//     height:100%;
+//     width: 100%;
+//     position: absolute;
+//     background: $brand-blue;
+//     transform: skew(-46deg);
+// }
+.about {
+    color: #fff;
+}

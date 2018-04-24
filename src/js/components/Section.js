@@ -1,6 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 
+import About from './Sections/About';
+import Landing from './Sections/Landing';
+
 export default class Section extends React.Component {
 
     constructor(props){
@@ -13,30 +16,12 @@ export default class Section extends React.Component {
         return (
             <div>
                 <div className="section">
-                    <div className="row text-center">
-                        <div className="col">
-                            <div className="display-1">
-                                <div>Hello</div> 
-                                <div>I'm James</div>
-                            </div>
-                            <h3>
-                                I like to write software.
-                            </h3>
-                            <button className="button-resume" onClick={()=> window.location.href = '/assets/james.pdf'}>
-                                Download Resume
-                            </button>
-                        </div>
-
-
-                    
-                    </div>
-                    <br></br>
-                    <div className="row justify-content-center">
-                        <div className="icon icon-github" onClick={() => {window.location.href='https://github.com/JamesODonoghue'}}></div>
-                        <div className="icon icon-linkedin" onClick={() => {window.location.href='http://www.linkedin.com/in/JamesODonoghue-92327555'}}></div>
-                        
-                    </div>
+                    <Landing/>
                 </div>
+                <div className="section">
+                    <About/>
+                </div>
+                
                 {/* <div className="section">
                     <div className="row">
                         <div className="col">
@@ -47,11 +32,12 @@ export default class Section extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col">
-                            <h3>
-                                Spotify Client that analyzes playlists.
-                            </h3>
-                            <button className="button-spotify">
-                                Login
+                            <button className="button-spotify" onClick={() => window.location.href='/spotify'}>
+                                    <div className="card-body">
+                                        <h4 className="card-title"> Spotify Playlist Analyzer</h4>
+                                        <p className="card-text"> Spotify Client that analyzes playlists. This app uses ReactJS and a Spotify API wrapper -- spotify-web-api </p>
+
+                                    </div>
                             </button>
                         </div>
                     </div>

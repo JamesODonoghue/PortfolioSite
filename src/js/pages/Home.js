@@ -19,10 +19,14 @@ export default class Home extends React.Component {
   render() {
     return (
       <div>
-        {/* <Parallax class="main-header"/> */}
+        <div className="background"/>
+        <div className="background-2"/>
+        
+        
         <div className="container">
 
-          {/* <Maps/> */}
+          {/* <Particles className="my-particles" params={particlesConfig}></Particles> */}
+
 
           <Section />
           
