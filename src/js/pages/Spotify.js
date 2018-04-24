@@ -9,6 +9,7 @@ import Modal from '../components/Modal';
 import Playlists from '../components/Spotify/Playlists';
 import Error from '../components/Spotify/Error';
 import Header from '../components/Spotify/Header';
+import Login from '../components/Spotify/Login';
 
 import AllTracks from '../components/Spotify/AllTracks';
 
@@ -222,28 +223,28 @@ export default class Spotify extends React.Component {
 
         return (
             <div className="spotify-page">
+
+                <Login/>
                 {user && user.name ?  <Header user={user}/> : null }
-                {
-                    error ? <Error error={error}/> 
-                    :
-                    <div className="container">
-                        <div className="dashboard">
-                            <div className="row">
-                            </div>
+
+                <div className="container">
+                    <div className="dashboard">
+                        <div className="row">
                         </div>
-
-                        { allTracks && allTracks.length > 0 ? <AllTracks tracks={allTracks}/> : []}
-
-                        <PlaylistsToRender/>
-                        <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
-                            <h2>{currentPlaylist ? currentPlaylist.name : ''}</h2>
-                            <ul className="list-group">
-                                {playListTracks}
-                            </ul>
-                        
-                        </Modal>
                     </div>
-                }
+
+                    { allTracks && allTracks.length > 0 ? <AllTracks tracks={allTracks}/> : []}
+
+                    <PlaylistsToRender/>
+                    <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
+                        <h2>{currentPlaylist ? currentPlaylist.name : ''}</h2>
+                        <ul className="list-group">
+                            {playListTracks}
+                        </ul>
+                    
+                    </Modal>
+                </div>
+            
         
             </div>
 
