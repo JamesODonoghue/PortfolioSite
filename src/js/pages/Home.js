@@ -19,8 +19,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <div>
-        <div className="background"/>
-        <div className="background-2"/>
+        {/* <div className="background"/>
+        <div className="background-2"/> */}
         
         
         <div className="container">

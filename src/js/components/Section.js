@@ -22,11 +22,11 @@ export default class Section extends React.Component {
                     <About/>
                 </div>
                 
-                {/* <div className="section">
+                <div className="section">
                     <div className="row">
                         <div className="col">
                             <div className="display-1">
-                                Here are some projects  
+                                Here is a sample project 
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ export default class Section extends React.Component {
                             </button>
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         );
     }
