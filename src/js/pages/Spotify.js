@@ -137,7 +137,6 @@ export default class Spotify extends React.Component {
                         allTracks.push(track);
 
                     });
-
                     playlists[key].audio_features = val.audio_features;
                     playlists[key].danceTotal = val.audio_features.reduce((total, value) => {
                         return sum += value.danceability ;
@@ -202,17 +201,21 @@ export default class Spotify extends React.Component {
         const PlaylistsToRender = () => {
             if(!playlists){
                 return <Loading/>
-            
             } else if(playlists && playlists.length === 0){
                 return <EmptyPlaylists/>
             } else {
-                return (
-                    <Playlists playlists={playlists} handleClick={this.handlePlaylistClick}/>
-                );
+                return <Playlists playlists={playlists} handleClick={this.handlePlaylistClick}/>
+            
             }
         };
 
-
+        const TracksToRender = () => {
+            if(allTracks && allTracks.length > 0){
+                return <AllTracks tracks={allTracks}/>;
+            } else {
+                return [];
+            }
+        }
 
         let playListTracks = currentPlaylist ? currentPlaylist.tracks.map((item) => 
             <li key={item.track.id} className="list-group-item rounded-0">
@@ -223,30 +226,25 @@ export default class Spotify extends React.Component {
 
         return (
             <div className="spotify-page">
-
-                <Login/>
-                {user && user.name ?  <Header user={user}/> : null }
-
+            {user && user.name ?  
                 <div className="container">
-                    <div className="dashboard">
-                        <div className="row">
-                        </div>
-                    </div>
-
-                    { allTracks && allTracks.length > 0 ? <AllTracks tracks={allTracks}/> : []}
-
+                    <Header user={user}/> 
+                    <TracksToRender/>
                     <PlaylistsToRender/>
-                    <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
-                        <h2>{currentPlaylist ? currentPlaylist.name : ''}</h2>
-                        <ul className="list-group">
-                            {playListTracks}
-                        </ul>
-                    
-                    </Modal>
                 </div>
-            
-        
+                : 
+                <Login/> 
+            }
+                
+                <Modal style={{}} onClose={this.handleModalClose} open={showModal}>
+                    <h2>{currentPlaylist ? currentPlaylist.name : ''}</h2>
+                    <ul className="list-group">
+                        {playListTracks}
+                    </ul>
+                    
+                </Modal>
             </div>
+            
 
         )
 
