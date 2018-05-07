@@ -60,3 +60,7 @@
 .button-resume {
     @include my-button($brand-blue)
 }
+
+.button-muni-map {
+    @include my-button($brand-blue)
+}
